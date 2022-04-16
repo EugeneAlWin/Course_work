@@ -19,7 +19,7 @@
             Grid.Row="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Content="Правила Дорожного Движения" />
+            Content="Правила Дорожного Движения 2077" />
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <Grid Width="Auto" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>

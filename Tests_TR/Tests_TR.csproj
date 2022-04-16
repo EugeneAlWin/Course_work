@@ -55,11 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="VIEV\PAGES\Admin_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VIEV\PAGES\Login_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VIEV\PAGES\Main_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIEV\PAGES\Testing_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,11 +79,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="VIEV\PAGES\Admin_Page.xaml.cs">
+      <DependentUpon>Admin_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VIEV\PAGES\Login_Page.xaml.cs">
       <DependentUpon>Login_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="VIEV\PAGES\Main_Page.xaml.cs">
       <DependentUpon>Main_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIEV\PAGES\Testing_Page.xaml.cs">
+      <DependentUpon>Testing_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="VIEV\WINDOWS\Main_Window.xaml.cs">
       <DependentUpon>Main_Window.xaml</DependentUpon>

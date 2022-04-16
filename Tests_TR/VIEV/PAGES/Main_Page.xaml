@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
         <Button Content="&lt;-" Width="50" Height="30" HorizontalAlignment="Left" Margin="10 0 0 0" Click="Button_Click"/>
         <Label Grid.Column="1" Content="Тест ПДД" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Grid.Column="1" Grid.Row="1" Width="260" Content="Экзамен"/>
+        <Button Grid.Column="1" Grid.Row="1" Width="260" Content="Экзамен" Click="Button_Click_1"/>
         <Button Grid.Column="1" Grid.Row="2" Width="260" Content="Зачет по теме №1"/>
         <Button Grid.Column="1" Grid.Row="3" Width="260" Content="Зачет по теме №2"/>
         <Button Grid.Column="1" Grid.Row="4" Width="260" Content="Зачет по теме №3"/>
