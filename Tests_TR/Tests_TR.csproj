@@ -55,6 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="VIEV\PAGES\Login_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VIEV\PAGES\Main_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VIEV\WINDOWS\Main_Window.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +70,12 @@
     <Compile Include="APP_CONFIG\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VIEV\PAGES\Login_Page.xaml.cs">
+      <DependentUpon>Login_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VIEV\PAGES\Main_Page.xaml.cs">
+      <DependentUpon>Main_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="VIEV\WINDOWS\Main_Window.xaml.cs">
       <DependentUpon>Main_Window.xaml</DependentUpon>
@@ -97,7 +111,6 @@
   <ItemGroup>
     <Folder Include="MODEL\" />
     <Folder Include="MODEL_VIEV\" />
-    <Folder Include="VIEV\PAGES\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

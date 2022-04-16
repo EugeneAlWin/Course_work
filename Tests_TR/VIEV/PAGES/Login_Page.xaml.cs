@@ -12,19 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tests_TR.VIEV.PAGES;
-namespace Tests_TR
+
+namespace Tests_TR.VIEV.PAGES
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Login_Page.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login_Page : Page
     {
-        public MainWindow()
+        public Login_Page()
         {
             InitializeComponent();
-            MainFrame.Content = new Login_Page();
         }
-
+        private void LogIn_Click(object sender, RoutedEventArgs e)
+        {
+            _ = NavigationService.Navigate(new Main_Page());
+        }
     }
 }
