@@ -16,17 +16,19 @@ using System.Windows.Shapes;
 namespace Tests_TR.VIEV.PAGES
 {
     /// <summary>
-    /// Логика взаимодействия для Login_Page.xaml
+    /// Логика взаимодействия для Main_Page.xaml
     /// </summary>
-    public partial class Login_Page : Page
+    public partial class Main_Page : Page
     {
-        public Login_Page()
+        public Main_Page()
         {
             InitializeComponent();
+            DataContext = new PagesVievModel();
         }
-        private void LogIn_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            _ = NavigationService.Navigate(new Main_Page());
+            _ = NavigationService.Navigate(new Testing_Page());
         }
     }
 }

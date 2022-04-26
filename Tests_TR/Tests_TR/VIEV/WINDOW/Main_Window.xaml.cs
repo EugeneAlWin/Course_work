@@ -12,17 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace Tests_TR.VIEV.PAGES
+using Tests_TR.VIEV.PAGES;
+using Tests_TR.VIEV_MODEL;
+namespace Tests_TR
 {
     /// <summary>
-    /// Логика взаимодействия для Testing_Page.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class Testing_Page : Page
+    public partial class MainWindow : Window
     {
-        public Testing_Page()
+
+        public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
+
     }
 }

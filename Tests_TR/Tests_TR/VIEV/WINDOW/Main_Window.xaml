@@ -5,9 +5,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Tests_TR"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="Тесты ПДД 2077"
+    Title="MainWindow"
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+    <Grid>
+        <Frame
+            Name="MainFrame"
+            Content="{Binding Current_Page}"
+            NavigationUIVisibility="Hidden" 
+            />
+    </Grid>
 </Window>
