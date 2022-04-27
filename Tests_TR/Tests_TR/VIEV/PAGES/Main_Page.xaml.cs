@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using System.Windows.Controls;
 
 namespace Tests_TR.VIEV.PAGES
 {
@@ -13,11 +11,6 @@ namespace Tests_TR.VIEV.PAGES
         {
             InitializeComponent();
             DataContext = new PagesVievModel();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            _ = NavigationService.Navigate(new Testing_Page());
         }
     }
 }

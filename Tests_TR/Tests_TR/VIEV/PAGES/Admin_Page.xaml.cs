@@ -10,6 +10,7 @@ namespace Tests_TR.VIEV.PAGES
         public Admin_Page()
         {
             InitializeComponent();
+            DataContext = new PagesVievModel();
         }
     }
 }

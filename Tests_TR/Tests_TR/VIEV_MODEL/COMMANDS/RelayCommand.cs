@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Tests_TR.VIEV_MODEL
+namespace Tests_TR
 {
     public class RelayCommand : ICommand
     {
