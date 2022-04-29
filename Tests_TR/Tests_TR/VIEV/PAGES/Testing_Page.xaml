@@ -9,7 +9,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
     <Grid Style="{StaticResource Background}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.08*" />
@@ -41,27 +40,36 @@
                 Style="{StaticResource Exit_Button}" />
         </Grid>
         <TabControl
+            x:Name="TabControl"
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            SelectedIndex="1"
+            SelectedIndex="{Binding SelectedIndex[0]}"
             TabStripPlacement="Left">
-            <TabItem Header="1" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="2" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="3" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="4" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="5" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="6" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="7" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="8" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="9" Style="{StaticResource Tab_Header}" />
-            <TabItem Header="10" Style="{StaticResource Tab_Header}" />
+            <TabItem Header="1" Style="{Binding Tab_Header_Color[0]}">
+                <Button Content="Тык" Command="{Binding Switch_Tab_Color}" CommandParameter="0"/>
+            </TabItem>
+            <TabItem Header="2" Style="{Binding Tab_Header_Color[1]}" />
+            <TabItem Header="3" Style="{Binding Tab_Header_Color[2]}" />
+            <TabItem Header="4" Style="{Binding Tab_Header_Color[3]}" />
+            <TabItem Header="5" Style="{Binding Tab_Header_Color[4]}" />
+            <TabItem Header="6" Style="{Binding Tab_Header_Color[5]}" />
+            <TabItem Header="7" Style="{Binding Tab_Header_Color[6]}" />
+            <TabItem Header="8" Style="{Binding Tab_Header_Color[7]}" />
+            <TabItem Header="9" Style="{Binding Tab_Header_Color[8]}" />
+            <TabItem Header="10" Style="{Binding Tab_Header_Color[9]}" />
         </TabControl>
         <Grid Grid.Row="2" Grid.Column="0">
-            <Button Content="&lt;" />
+            <Button
+                Command="{Binding Switch_Tab}"
+                CommandParameter="false"
+                Content="&lt;" />
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
-            <Button Content="&gt;" />
+            <Button
+                Command="{Binding Switch_Tab}"
+                CommandParameter="true"
+                Content="&gt;" />
         </Grid>
     </Grid>
 </Page>

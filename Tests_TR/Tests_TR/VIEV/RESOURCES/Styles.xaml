@@ -13,13 +13,23 @@
     </Style>
     <Style x:Key="Timer_Text" TargetType="TextBlock">
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="FontWeight" Value="500" />
+        <!--<Setter Property="FontWeight" Value="500" />-->
         <Setter Property="Foreground" Value="#000000" />
     </Style>
 
-    <Style x:Key="Tab_Header" TargetType="TabItem">
+    <Style x:Key="Tab_Header_Untouched" TargetType="TabItem">
         <Setter Property="Width" Value="50" />
         <Setter Property="Height" Value="30" />
+    </Style>
+    <Style x:Key="Tab_Header_Wrong" TargetType="TabItem">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Background" Value="Red" />
+    </Style>
+    <Style x:Key="Tab_Header_Right" TargetType="TabItem">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Background" Value="Green" />
     </Style>
     <Style x:Key="Exit_Button" TargetType="Button">
         <Setter Property="Background" Value="Red" />

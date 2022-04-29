@@ -8,11 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="VIEV\RESOURCES\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="MODEL\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="VIEV\RESOURCES\favicon.ico" />
   </ItemGroup>
 
 </Project>

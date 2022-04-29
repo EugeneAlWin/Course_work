@@ -8,12 +8,12 @@
     Title="MainWindow"
     Width="800"
     Height="450"
+    Icon="/VIEV/RESOURCES/favicon.ico"
     mc:Ignorable="d">
     <Grid>
         <Frame
             Name="MainFrame"
             Content="{Binding Current_Page}"
-            NavigationUIVisibility="Hidden" 
-            />
+            NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

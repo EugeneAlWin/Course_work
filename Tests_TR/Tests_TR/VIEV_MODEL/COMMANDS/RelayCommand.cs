@@ -14,7 +14,7 @@ namespace Tests_TR
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null!)
         {
             this.execute = execute;
             this.canExecute = canExecute;
@@ -22,13 +22,10 @@ namespace Tests_TR
 
         public bool CanExecute(object parameter)
         {
-            return this.canExecute == null || this.canExecute(parameter);
+            return canExecute == null || canExecute.Invoke(parameter);
         }
 
-        public void Execute(object parameter)
-        {
-            this.execute(parameter);
-        }
+        public void Execute(object parameter) => execute?.Invoke(parameter);
 
     }
 }
