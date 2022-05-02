@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 namespace Tests_TR
 {
 
-    public class PagesVievModel : Pages_Props
+    public partial class PagesVievModel
     {
         public static string[] Tests_List { get => tests_List; }
         public static List<Page> Pages_List { get => pages_List; set => pages_List = value; }
@@ -30,7 +30,7 @@ namespace Tests_TR
         }
     }
 
-    public abstract class Pages_Props : INotifyPropertyChanged
+    public partial class PagesVievModel : INotifyPropertyChanged
     {
 
         private static readonly Login_Page login_Page = new(); //Awailable page
