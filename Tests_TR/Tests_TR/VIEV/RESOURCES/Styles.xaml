@@ -35,6 +35,7 @@
         <Setter Property="Background" Value="Red" />
         <Setter Property="Foreground" Value="White" />
     </Style>
+
     <!--#endregion-->
 
 

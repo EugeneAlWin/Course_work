@@ -35,6 +35,8 @@
                     HorizontalContentAlignment="Left"
                     Content="Логин" />
                 <TextBox
+                    Text="{Binding Login_Password[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    x:Name="Login"
                     Grid.Column="1"
                     Width="121"
                     VerticalAlignment="Center" />
@@ -44,6 +46,8 @@
                     HorizontalContentAlignment="Left"
                     Content="Пароль" />
                 <TextBox
+                    Text="{Binding Login_Password[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    x:Name="Password"
                     Grid.Row="1"
                     Grid.Column="1"
                     Width="121"

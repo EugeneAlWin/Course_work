@@ -46,49 +46,56 @@
             Grid.Column="1"
             Width="260"
             Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[0]}"
+            CommandParameter="0"
             Content="Экзамен" />
         <Button
             Grid.Row="2"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №1" Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[1]}" />
+            Command="{Binding Path=To_Test}"
+            CommandParameter="1"
+            Content="Зачет по теме №1" />
         <Button
             Grid.Row="3"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №2"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[2]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="2"
+            Content="Зачет по теме №2" />
         <Button
             Grid.Row="4"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №3"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[3]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="3"
+            Content="Зачет по теме №3" />
         <Button
             Grid.Row="5"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №4"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[4]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="4"
+            Content="Зачет по теме №4" />
         <Button
             Grid.Row="6"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №5"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[5]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="5"
+            Content="Зачет по теме №5" />
         <Button
             Grid.Row="7"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №6"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[6]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="6"
+            Content="Зачет по теме №6" />
         <Button
             Grid.Row="8"
             Grid.Column="1"
             Width="260"
-            Content="Зачет по теме №7"  Command="{Binding Path=To_Test}"
-            CommandParameter="{Binding Path=Tests_List[7]}"/>
+            Command="{Binding Path=To_Test}"
+            CommandParameter="7"
+            Content="Зачет по теме №7" />
     </Grid>
 </Page>
