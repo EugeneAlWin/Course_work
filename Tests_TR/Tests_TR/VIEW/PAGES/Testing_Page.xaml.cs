@@ -1,4 +1,4 @@
-﻿namespace Tests_TR.VIEV.PAGES
+﻿namespace Tests_TR.VIEW.PAGES
 {
     /// <summary>
     /// Логика взаимодействия для Testing_Page.xaml
@@ -9,7 +9,7 @@
         {
 
             InitializeComponent();
-            DataContext = new PagesVievModel();
+            DataContext = new PagesViewModel();
         }
 
     }

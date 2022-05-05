@@ -9,7 +9,7 @@ namespace Tests_TR
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new PagesVievModel();
+            DataContext = new PagesViewModel();
         }
     }
 }

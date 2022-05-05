@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Tests_TR.VIEV.PAGES
+namespace Tests_TR.VIEW.PAGES
 {
     /// <summary>
     /// Логика взаимодействия для Login_Page.xaml
@@ -10,7 +10,7 @@ namespace Tests_TR.VIEV.PAGES
         public Login_Page()
         {
             InitializeComponent();
-            DataContext = new PagesVievModel();
+            DataContext = new PagesViewModel();
         }
 
     }

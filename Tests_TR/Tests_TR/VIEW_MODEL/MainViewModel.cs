@@ -9,11 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Tests_TR.MODEL;
-using Tests_TR.VIEV.PAGES;
+using Tests_TR.VIEW.PAGES;
 namespace Tests_TR
 {
 
-    public partial class PagesVievModel //Props
+    public partial class PagesViewModel //Props
     {
         public string Given_Answer
         {
@@ -64,11 +64,11 @@ namespace Tests_TR
                 MessageBox.Show("Ошибка при обновлении базы данных.\n");
             }
         }
-        public PagesVievModel()
+        public PagesViewModel()
         {
 
         }
-        static PagesVievModel()
+        static PagesViewModel()
         {
 
             Load_Data();
@@ -76,7 +76,7 @@ namespace Tests_TR
     }
 
 
-    public partial class PagesVievModel : INotifyPropertyChanged //Fields
+    public partial class PagesViewModel : INotifyPropertyChanged //Fields
     {
 
         private static readonly Login_Page login_Page = new(); //Awailable page
@@ -116,7 +116,7 @@ namespace Tests_TR
     }
 
 
-    public partial class PagesVievModel : INotifyPropertyChanged //Commands' fields
+    public partial class PagesViewModel : INotifyPropertyChanged //Commands' fields
     {
         private static readonly RelayCommand log_In_Out = new(next_page =>
         {
@@ -128,13 +128,12 @@ namespace Tests_TR
                 login_Password[0] = login_Password[1] = "";
                 NavService.Navigate(next_page);
                 selectedIndex[0] = 0; current_Page = (Page)next_page;
-                users.Clear();
             }
             if (current_Page == login_Page)
             {
                 if (login_Password[0] == "" || login_Password[1] == "") return;
 
-                var temp_Acsess = db.Users.Where(x => x.Login == login_Password[0] && x.Password == login_Password[1]).FirstOrDefault();
+                var temp_Acsess = users.Where(x => x.Login == login_Password[0] && x.Password == login_Password[1]).FirstOrDefault();
 
                 if (temp_Acsess != null)
                 {
