@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="VIEV\RESOURCES\favicon.ico" />
+    <None Remove="VIEW\RESOURCES\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="VIEV\RESOURCES\favicon.ico" />
+    <Resource Include="VIEW\RESOURCES\favicon.ico" />
   </ItemGroup>
 
 </Project>
