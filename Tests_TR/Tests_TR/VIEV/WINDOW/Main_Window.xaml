@@ -6,11 +6,10 @@
     xmlns:local="clr-namespace:Tests_TR"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Тесты ПДД 2077"
-    
     Width="800"
     Height="450"
-    WindowStartupLocation="CenterScreen"
     Icon="/VIEV/RESOURCES/favicon.ico"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
         <Frame

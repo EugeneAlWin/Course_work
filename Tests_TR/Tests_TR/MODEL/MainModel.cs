@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Windows;
+#nullable disable
 namespace Tests_TR.MODEL
 {
     public class MainModel
@@ -20,7 +21,7 @@ namespace Tests_TR.MODEL
         public DatabaseContext()
         {
             //Database.EnsureDeleted();
-            bool temp = Database.EnsureCreatedAsync().Result;
+            bool temp = Database.EnsureCreated();
             //MessageBox.Show(temp ? "Бд создана" : "Бд существует");
         }
 

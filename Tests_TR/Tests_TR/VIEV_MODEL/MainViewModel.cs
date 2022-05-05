@@ -71,7 +71,7 @@ namespace Tests_TR
         static PagesVievModel()
         {
 
-            _ = new RelayCommand((obj) => Load_Data());
+            Load_Data();
         }
     }
 
@@ -128,6 +128,7 @@ namespace Tests_TR
                 login_Password[0] = login_Password[1] = "";
                 NavService.Navigate(next_page);
                 selectedIndex[0] = 0; current_Page = (Page)next_page;
+                users.Clear();
             }
             if (current_Page == login_Page)
             {
@@ -203,7 +204,7 @@ namespace Tests_TR
         {
             byte temp = Convert.ToBoolean(next_tab) ? ++selectedIndex[0] : --selectedIndex[0];
             if (selectedIndex[0] > 9) selectedIndex[0] = 0;
-            if (selectedIndex[0] < 0) selectedIndex[0] = 9;
+            else if (selectedIndex[0] < 0) selectedIndex[0] = 9;
         });
         private static readonly RelayCommand switch_Tab_Color = new(curr_tub => //Tab color
         {
