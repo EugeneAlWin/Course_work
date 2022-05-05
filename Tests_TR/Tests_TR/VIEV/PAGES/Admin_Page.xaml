@@ -5,15 +5,57 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Tests_TR.VIEV.PAGES"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tests_tr="clr-namespace:Tests_TR"
     Title="Admin_Page"
+    d:DataContext="{d:DesignInstance Type=tests_tr:PagesVievModel}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
     <Grid Background="WhiteSmoke">
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.9*" />
+        </Grid.RowDefinitions>
+        <Button
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="50"
+            Height="50"
+            Command="{Binding Path=Log_In_Out}"
+            CommandParameter="{Binding Pages_List[0]}"
+            Content="Назад" />
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
             <TabItem Header="Пользователи">
-                <Grid />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <DataGrid
+                        x:Name="Users_Grid"
+                        AutoGenerateColumns="True"
+                        ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <StackPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="updateButton"
+                            Command="{Binding Update_Database}"
+                            CommandParameter="Прив"
+                            Content="Обновить" />
+                        <Button x:Name="deleteButton" Content="Удалить" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Тест 1">
                 <Grid />

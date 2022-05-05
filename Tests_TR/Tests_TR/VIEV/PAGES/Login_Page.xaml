@@ -35,30 +35,31 @@
                     HorizontalContentAlignment="Left"
                     Content="Логин" />
                 <TextBox
-                    Text="{Binding Login_Password[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     x:Name="Login"
                     Grid.Column="1"
                     Width="121"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Text="{Binding Login_Password[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     HorizontalContentAlignment="Left"
                     Content="Пароль" />
                 <TextBox
-                    Text="{Binding Login_Password[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     x:Name="Password"
                     Grid.Row="1"
                     Grid.Column="1"
                     Width="121"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    Text="{Binding Login_Password[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Button
                     x:Name="LogIn"
                     Grid.Row="2"
                     Grid.ColumnSpan="2"
                     Width="120"
                     Margin="0,10,0,0"
-                    Command="{Binding Path=Switch_Page}" CommandParameter="{Binding Pages_List[1]}"
+                    Command="{Binding Path=Log_In_Out}"
+                    CommandParameter="{Binding Pages_List[1]}"
                     Content="Войти" />
             </Grid>
         </StackPanel>

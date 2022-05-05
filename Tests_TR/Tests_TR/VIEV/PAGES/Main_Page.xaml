@@ -33,7 +33,7 @@
             Height="30"
             Margin="10,0,0,0"
             HorizontalAlignment="Left"
-            Command="{Binding Path=Switch_Page}"
+            Command="{Binding Path=Log_In_Out}"
             CommandParameter="{Binding Pages_List[0]}"
             Content="&lt;-" />
         <Label

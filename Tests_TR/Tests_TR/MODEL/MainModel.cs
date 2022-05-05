@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-#nullable disable
+using System.Configuration;
+using System.Windows;
 namespace Tests_TR.MODEL
 {
     public class MainModel
@@ -21,15 +16,26 @@ namespace Tests_TR.MODEL
         public DbSet<Test> Tests { get; set; }
         public DbSet<Questions> Questions { get; set; }
         public DbSet<User> Users { get; set; }
+
         public DatabaseContext()
         {
             //Database.EnsureDeleted();
-            Database.EnsureCreated();
+            bool temp = Database.EnsureCreatedAsync().Result;
+            //MessageBox.Show(temp ? "Бд создана" : "Бд существует");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=preCourse2;Trusted_Connection=True;");
+            try
+            {
+                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Проверьте подключение к серверу.\nВозможно, вам стоит проверить строку подключения в App.config.");
+                Application.Current.Shutdown();
+            }
+
         }
     }
 
@@ -65,10 +71,10 @@ namespace Tests_TR.MODEL
         [MaxLength(150)]
         public string? Answer_4 { get; set; }
         [MaxLength(150)]
-        public string Right_Answer { get; set; }
         [Required]
+        public string Right_Answer { get; set; }
         [MaxLength(150)]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public Test Test { get; set; }
 
         public override string ToString()
@@ -96,7 +102,10 @@ namespace Tests_TR.MODEL
         public string Last_Name { get; set; }
         [MaxLength(30)]
         public string Father_Name { get; set; }
-
+        public override string ToString()
+        {
+            return $"{Id}-{Login}-{Password}-{Role}";
+        }
     }
 
 }
