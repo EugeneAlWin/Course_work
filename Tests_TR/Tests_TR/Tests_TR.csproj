@@ -5,10 +5,13 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>VIEW\RESOURCES\favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="VIEW\RESOURCES\favicon.ico" />
+    <None Remove="VIEW\RESOURCES\IMG\flat.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\LoadScreen.gif" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +33,19 @@
 
   <ItemGroup>
     <Resource Include="VIEW\RESOURCES\favicon.ico" />
+    <Resource Include="VIEW\RESOURCES\IMG\flat.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="VIEW\RESOURCES\IMG\LoadScreen.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VIEW\RESOURCES\img\квартира1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

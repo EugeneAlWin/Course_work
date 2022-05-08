@@ -39,29 +39,62 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DataGrid
-                        x:Name="Users_Grid"
-                        AutoGenerateColumns="True"
-                        ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Login}" Header="Логин" />
+                            <DataGridTextColumn Binding="{Binding Path=Password}" Header="Пароль" />
+                            <DataGridTextColumn Binding="{Binding Path=Role}" Header="Роль" />
+                            <DataGridTextColumn Binding="{Binding Path=Last_Name}" Header="Фамилия" />
+                            <DataGridTextColumn Binding="{Binding Path=Name}" Header="Имя" />
+                            <DataGridTextColumn Binding="{Binding Path=Father_Name}" Header="Отчество" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
                     <StackPanel
                         Grid.Row="1"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
                         <Button
-                            x:Name="updateButton"
                             Command="{Binding Update_Database}"
                             CommandParameter="Прив"
                             Content="Обновить" />
-                        <Button x:Name="deleteButton" Content="Удалить" />
                     </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Тест 1">
-                <Grid />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Questions_Test_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Question}" Header="Вопрос" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_1}" Header="Ответ 1" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_2}" Header="Ответ 2" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_3}" Header="Ответ 3" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_4}" Header="Ответ 4" />
+                            <DataGridTextColumn Binding="{Binding Path=Right_Answer}" Header="Правильный ответ" />
+                            <DataGridTextColumn Binding="{Binding Path=Image}" Header="Путь к картинке" />
+                            <DataGridTextColumn Binding="{Binding Path=Test.Id}" Header="ID теста" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            Command="{Binding Update_Database}"
+                            CommandParameter="Прив"
+                            Content="Обновить" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Тест 2">
                 <Grid />
+
             </TabItem>
             <TabItem Header="Тест 3">
                 <Grid />

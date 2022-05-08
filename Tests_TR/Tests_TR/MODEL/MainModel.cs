@@ -22,6 +22,7 @@ namespace Tests_TR.MODEL
         {
             //Database.EnsureDeleted();
             bool temp = Database.EnsureCreated();
+            Load_Data();
             //MessageBox.Show(temp ? "Бд создана" : "Бд существует");
         }
 
@@ -37,6 +38,12 @@ namespace Tests_TR.MODEL
                 Application.Current.Shutdown();
             }
 
+        }
+        public async void Load_Data()
+        {
+            await this.Users.LoadAsync();
+            await this.Questions.LoadAsync();
+            await this.Tests.LoadAsync();
         }
     }
 

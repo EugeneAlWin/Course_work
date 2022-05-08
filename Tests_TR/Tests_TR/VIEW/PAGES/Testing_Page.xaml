@@ -155,7 +155,7 @@
                     <Image
                         Grid.Row="1"
                         Grid.Column="0"
-                        Source="C:\Users\evgen\Desktop\lab10(WpfDataBase)\WpfApp1\WpfApp1\bin\Debug\квартира1.jpg" />
+                        Source="/VIEW/RESOURCES/IMG/flat.jpg" />
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>

@@ -1,9 +1,8 @@
 use preCourse2
 
-insert into Tests values
-	(
-		1,'Зачет по теме № 1'
-	);
+insert into Tests (Topic, Name)  values
+		(1,'Зачет по теме № 1'),
+		(2,'Зачет по теме № 2');
 
 insert into Questions values 
 	(
@@ -108,6 +107,7 @@ insert into Questions values
 	);
 
 
+
 insert into Users values
 	(
 		'login',
@@ -117,3 +117,5 @@ insert into Users values
 		'Евгений',
 		'Витальевич'
 	);
+
+	GO

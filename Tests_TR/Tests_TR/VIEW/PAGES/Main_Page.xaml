@@ -26,6 +26,7 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
             <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Button
@@ -97,5 +98,12 @@
             Command="{Binding Path=To_Test}"
             CommandParameter="7"
             Content="Зачет по теме №7" />
+        <Button
+            Grid.Row="9"
+            Grid.Column="1"
+            Width="260"
+            Command="{Binding Path=Switch_Page}"
+            CommandParameter="{Binding Pages_List[4]}"
+            Content="Изучить правила" />
     </Grid>
 </Page>

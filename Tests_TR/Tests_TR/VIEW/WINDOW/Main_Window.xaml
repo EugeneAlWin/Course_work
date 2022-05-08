@@ -8,7 +8,7 @@
     Title="Тесты ПДД 2077"
     Width="800"
     Height="450"
-    Icon="/VIEV/RESOURCES/favicon.ico"
+    Icon="/VIEW/RESOURCES/favicon.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Grid>
