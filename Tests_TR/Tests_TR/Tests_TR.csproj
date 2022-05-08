@@ -12,6 +12,7 @@
     <None Remove="VIEW\RESOURCES\favicon.ico" />
     <None Remove="VIEW\RESOURCES\IMG\flat.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\LoadScreen.gif" />
+    <None Remove="VIEW\RESOURCES\LoadScreen.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="VIEW\RESOURCES\IMG\LoadScreen.gif" />
+    <SplashScreen Include="VIEW\RESOURCES\LoadScreen.png" />
   </ItemGroup>
 
   <ItemGroup>

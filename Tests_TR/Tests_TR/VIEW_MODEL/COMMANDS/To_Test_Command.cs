@@ -21,9 +21,9 @@ namespace Tests_TR
                 };
 
                 questions.Clear();
-                var questions_Count = db.Questions.Where(p => p.Test.Id == Convert.ToInt32(num_of_test)).Count();
+                var questions_Count = db.Questions.Where(p => p.Test.Topic == Convert.ToInt32(num_of_test)).Count();
                 var random_Range = Enumerable.Range(0, questions_Count).OrderBy(x => Guid.NewGuid()).Take(10).ToList();
-                var questions_Range = db.Questions.Where(p => p.Test.Id == Convert.ToInt32(num_of_test)).ToList();
+                var questions_Range = db.Questions.Where(p => p.Test.Topic == Convert.ToInt32(num_of_test)).ToList();
 
                 foreach (var item in random_Range)
                 {

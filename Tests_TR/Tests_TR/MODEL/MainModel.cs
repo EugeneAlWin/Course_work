@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Configuration;
-using System.Windows;
 #nullable disable
 namespace Tests_TR.MODEL
 {
@@ -28,33 +26,57 @@ namespace Tests_TR.MODEL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            try
-            {
-                optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Проверьте подключение к серверу.\nВозможно, вам стоит проверить строку подключения в App.config.");
-                Application.Current.Shutdown();
-            }
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(User_Builder);
+            modelBuilder.Entity<Test>(Test_Builder);
+            modelBuilder.Entity<Questions>(Questions_Builder);
 
         }
-        public async void Load_Data()
+        private void User_Builder(EntityTypeBuilder<User> entity)
         {
-            await this.Users.LoadAsync();
-            await this.Questions.LoadAsync();
-            await this.Tests.LoadAsync();
+            entity.HasKey(i => i.Id).HasName("PK_User");
+            entity.Property(i => i.Id).ValueGeneratedOnAdd();
+            entity.Property(l => l.Login).HasMaxLength(30).IsRequired();
+            entity.Property(p => p.Password).HasMaxLength(30).IsRequired();
+            entity.Property(r => r.Role).HasMaxLength(6).IsRequired();
+            entity.Property(n => n.Name).HasMaxLength(30).IsRequired();
+            entity.Property(ln => ln.Last_Name).HasMaxLength(30).IsRequired();
+            entity.Property(fn => fn.Father_Name).HasMaxLength(30);
+            entity.HasCheckConstraint("CK_User_Role", "role = 'admin' or role = 'user'");
+        }
+        private void Test_Builder(EntityTypeBuilder<Test> entity)
+        {
+            entity.HasKey(i => i.Id).HasName("PK_Test");
+            entity.Property(n => n.Name).HasMaxLength(50).IsRequired();
+            entity.Property(t => t.Topic).IsRequired();
+        }
+        private void Questions_Builder(EntityTypeBuilder<Questions> entity)
+        {
+            entity.HasKey(i => i.Id).HasName("PK_Questions");
+            entity.Property(q => q.Question).HasMaxLength(300).IsRequired();
+            entity.Property(a => a.Answer_1).HasMaxLength(200).IsRequired();
+            entity.Property(a => a.Answer_2).HasMaxLength(200).IsRequired();
+            entity.Property(a => a.Answer_3).HasMaxLength(200);
+            entity.Property(a => a.Answer_4).HasMaxLength(200);
+            entity.Property(ra => ra.Right_Answer).HasMaxLength(1).IsRequired();
+            entity.Property(p => p.Paragraph).HasMaxLength(60);
+            entity.Property(i => i.Image).HasMaxLength(150);
+        }
+        public void Load_Data()
+        {
+            Users.Load();
+            Questions.Load();
+            Tests.Load();
         }
     }
 
     public class Test
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
         public int Topic { get; set; }
-        [MaxLength(50)]
-        [Required]
         public string Name { get; set; }
         public List<Questions> Questions { get; set; } = new();
 
@@ -62,27 +84,15 @@ namespace Tests_TR.MODEL
 
     public class Questions
     {
-        [Key]
         public int Id { get; set; }
-
-        [Required]
-        [MaxLength(300)]
         public string Question { get; set; }
-        [Required]
-        [MaxLength(150)]
         public string Answer_1 { get; set; }
-        [Required]
-        [MaxLength(150)]
         public string Answer_2 { get; set; }
-        [MaxLength(150)]
-        public string? Answer_3 { get; set; }
-        [MaxLength(150)]
-        public string? Answer_4 { get; set; }
-        [MaxLength(150)]
-        [Required]
+        public string Answer_3 { get; set; }
+        public string Answer_4 { get; set; }
         public string Right_Answer { get; set; }
-        [MaxLength(150)]
-        public string? Image { get; set; }
+        public string Paragraph { get; set; }
+        public string Image { get; set; }
         public Test Test { get; set; }
 
         public override string ToString()
@@ -93,22 +103,12 @@ namespace Tests_TR.MODEL
 
     public class User
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(30)]
         public string Login { get; set; }
-        [Required]
-        [MaxLength(30)]
         public string Password { get; set; }
-        [Required]
-        [MaxLength(30)]
         public string Role { get; set; }
-        [MaxLength(30)]
         public string Name { get; set; }
-        [MaxLength(30)]
         public string Last_Name { get; set; }
-        [MaxLength(30)]
         public string Father_Name { get; set; }
         public override string ToString()
         {

@@ -37,7 +37,7 @@ namespace Tests_TR
         #region Admin_Region
         public static ObservableCollection<User> Users { get => users; set => users = value; }
         public static List<Questions> Questions_Test_0 { get => questions_Test_0; set => questions_Test_0 = value; } //exam
-        public static List<Questions> Questions_Test_1 { get => questions_Test_1; set => questions_Test_1 = value; }
+        public static ObservableCollection<Questions> Questions_Test_1 { get => questions_Test_1; set => questions_Test_1 = value; }
         public static List<Questions> Questions_Test_2 { get => questions_Test_2; set => questions_Test_2 = value; }
         public static List<Questions> Questions_Test_3 { get => questions_Test_3; set => questions_Test_3 = value; }
         public static List<Questions> Questions_Test_4 { get => questions_Test_4; set => questions_Test_4 = value; }
@@ -56,6 +56,7 @@ namespace Tests_TR
         public static RelayCommand Update_Database { get => update_Database; }
 
         #endregion
+
         public PagesViewModel()
         {
 
@@ -73,7 +74,7 @@ namespace Tests_TR
         private static readonly Testing_Page testing_Page = new(); //Awailable page
         private static readonly Admin_Page admin_Page = new(); //Awailable page
         private static readonly Rules_Page rules_Page = new(); //Awailable page
-        private static Page current_Page = rules_Page;
+        private static Page current_Page = admin_Page;
 
         #region Test_Region
         private static readonly Style tab_Wrong = (Style)Application.Current.FindResource("Tab_Header_Wrong");
@@ -96,14 +97,14 @@ namespace Tests_TR
 
         #region Admin_Region
         private static ObservableCollection<User> users = db.Users.Local.ToObservableCollection();
-        private static List<Questions> questions_Test_0 = db.Questions.Where(question => question.Test.Id == 0).ToList();
-        private static List<Questions> questions_Test_1 = db.Questions.Where(question => question.Test.Id == 1).ToList();
-        private static List<Questions> questions_Test_2 = db.Questions.Where(question => question.Test.Id == 2).ToList();
-        private static List<Questions> questions_Test_3 = db.Questions.Where(question => question.Test.Id == 3).ToList();
-        private static List<Questions> questions_Test_4 = db.Questions.Where(question => question.Test.Id == 4).ToList();
-        private static List<Questions> questions_Test_5 = db.Questions.Where(question => question.Test.Id == 5).ToList();
-        private static List<Questions> questions_Test_6 = db.Questions.Where(question => question.Test.Id == 6).ToList();
-        private static List<Questions> questions_Test_7 = db.Questions.Where(question => question.Test.Id == 7).ToList();
+        private static ObservableCollection<Questions> questions_Test_1 = db.Questions.Local.ToObservableCollection();//Where(question => question.Test.Topic == 1).ToList();
+        private static List<Questions> questions_Test_0 = db.Questions.Where(question => question.Test.Topic == 0).ToList();
+        private static List<Questions> questions_Test_2 = db.Questions.Where(question => question.Test.Topic == 2).ToList();
+        private static List<Questions> questions_Test_3 = db.Questions.Where(question => question.Test.Topic == 3).ToList();
+        private static List<Questions> questions_Test_4 = db.Questions.Where(question => question.Test.Topic == 4).ToList();
+        private static List<Questions> questions_Test_5 = db.Questions.Where(question => question.Test.Topic == 5).ToList();
+        private static List<Questions> questions_Test_6 = db.Questions.Where(question => question.Test.Topic == 6).ToList();
+        private static List<Questions> questions_Test_7 = db.Questions.Where(question => question.Test.Topic == 7).ToList();
         #endregion
 
         private static bool app_started_flag = false;
