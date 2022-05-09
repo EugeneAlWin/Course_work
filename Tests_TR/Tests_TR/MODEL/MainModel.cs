@@ -18,7 +18,7 @@ namespace Tests_TR.MODEL
 
         public DatabaseContext()
         {
-            //Database.EnsureDeleted();
+            // Database.EnsureDeleted();
             bool temp = Database.EnsureCreated();
             Load_Data();
             //MessageBox.Show(temp ? "Бд создана" : "Бд существует");
@@ -35,23 +35,31 @@ namespace Tests_TR.MODEL
             modelBuilder.Entity<Questions>(Questions_Builder);
 
         }
-        private void User_Builder(EntityTypeBuilder<User> entity)
+        private void User_Builder(EntityTypeBuilder<User> e)
         {
-            entity.HasKey(i => i.Id).HasName("PK_User");
-            entity.Property(i => i.Id).ValueGeneratedOnAdd();
-            entity.Property(l => l.Login).HasMaxLength(30).IsRequired();
-            entity.Property(p => p.Password).HasMaxLength(30).IsRequired();
-            entity.Property(r => r.Role).HasMaxLength(6).IsRequired();
-            entity.Property(n => n.Name).HasMaxLength(30).IsRequired();
-            entity.Property(ln => ln.Last_Name).HasMaxLength(30).IsRequired();
-            entity.Property(fn => fn.Father_Name).HasMaxLength(30);
-            entity.HasCheckConstraint("CK_User_Role", "role = 'admin' or role = 'user'");
+            e.HasKey(i => i.Id).HasName("PK_User");
+            e.Property(i => i.Id).ValueGeneratedOnAdd();
+            e.HasIndex(i => i.Login).IsUnique();
+            e.Property(l => l.Login).HasMaxLength(30).IsRequired();
+            e.HasIndex(i => i.Password).IsUnique();
+            e.Property(p => p.Password).HasMaxLength(30).IsRequired();
+            e.Property(r => r.Role).HasMaxLength(6).IsRequired();
+            e.Property(n => n.Name).HasMaxLength(30).IsRequired();
+            e.Property(ln => ln.Last_Name).HasMaxLength(30).IsRequired();
+            e.Property(fn => fn.Father_Name).HasMaxLength(30);
+            e.HasCheckConstraint("CK_User_Role", "role = 'admin' or role = 'user'");
         }
         private void Test_Builder(EntityTypeBuilder<Test> entity)
         {
             entity.HasKey(i => i.Id).HasName("PK_Test");
+            entity.Property(i => i.Id).ValueGeneratedNever();
+            entity.HasIndex(i => i.Id).IsUnique();
             entity.Property(n => n.Name).HasMaxLength(50).IsRequired();
             entity.Property(t => t.Topic).IsRequired();
+            entity.HasMany(t => t.Questions).WithOne(q => q.Test)
+                .HasForeignKey(q => q.Test_Id)
+                .HasConstraintName("FK_Test_Questions_Test_Id ")
+                .OnDelete(DeleteBehavior.Cascade);
         }
         private void Questions_Builder(EntityTypeBuilder<Questions> entity)
         {
@@ -64,6 +72,7 @@ namespace Tests_TR.MODEL
             entity.Property(ra => ra.Right_Answer).HasMaxLength(1).IsRequired();
             entity.Property(p => p.Paragraph).HasMaxLength(60);
             entity.Property(i => i.Image).HasMaxLength(150);
+            entity.Property(t => t.Test_Id).IsRequired();
         }
         public void Load_Data()
         {
@@ -85,6 +94,7 @@ namespace Tests_TR.MODEL
     public class Questions
     {
         public int Id { get; set; }
+        public int Test_Id { get; set; }
         public string Question { get; set; }
         public string Answer_1 { get; set; }
         public string Answer_2 { get; set; }

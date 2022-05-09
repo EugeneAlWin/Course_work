@@ -35,15 +35,9 @@ namespace Tests_TR
         public static ObservableCollection<Style> Tab_Header_Color { get => tab_Header_Color; set => tab_Header_Color = value; }
 
         #region Admin_Region
-        public static ObservableCollection<User> Users { get => users; set => users = value; }
-        public static List<Questions> Questions_Test_0 { get => questions_Test_0; set => questions_Test_0 = value; } //exam
-        public static ObservableCollection<Questions> Questions_Test_1 { get => questions_Test_1; set => questions_Test_1 = value; }
-        public static List<Questions> Questions_Test_2 { get => questions_Test_2; set => questions_Test_2 = value; }
-        public static List<Questions> Questions_Test_3 { get => questions_Test_3; set => questions_Test_3 = value; }
-        public static List<Questions> Questions_Test_4 { get => questions_Test_4; set => questions_Test_4 = value; }
-        public static List<Questions> Questions_Test_5 { get => questions_Test_5; set => questions_Test_5 = value; }
-        public static List<Questions> Questions_Test_6 { get => questions_Test_6; set => questions_Test_6 = value; }
-        public static List<Questions> Questions_Test_7 { get => questions_Test_7; set => questions_Test_7 = value; }
+        public static ObservableCollection<User> Users_Admin { get => users_Admin; set => users_Admin = value; }
+        public static ObservableCollection<Test> Tests_Admin { get => tests_Admin; set => tests_Admin = value; }
+        public static ObservableCollection<Questions> Questions_Admin { get => questions_Admin; set => questions_Admin = value; }
         #endregion
 
         #region Command_Region
@@ -96,15 +90,10 @@ namespace Tests_TR
         #endregion
 
         #region Admin_Region
-        private static ObservableCollection<User> users = db.Users.Local.ToObservableCollection();
-        private static ObservableCollection<Questions> questions_Test_1 = db.Questions.Local.ToObservableCollection();//Where(question => question.Test.Topic == 1).ToList();
-        private static List<Questions> questions_Test_0 = db.Questions.Where(question => question.Test.Topic == 0).ToList();
-        private static List<Questions> questions_Test_2 = db.Questions.Where(question => question.Test.Topic == 2).ToList();
-        private static List<Questions> questions_Test_3 = db.Questions.Where(question => question.Test.Topic == 3).ToList();
-        private static List<Questions> questions_Test_4 = db.Questions.Where(question => question.Test.Topic == 4).ToList();
-        private static List<Questions> questions_Test_5 = db.Questions.Where(question => question.Test.Topic == 5).ToList();
-        private static List<Questions> questions_Test_6 = db.Questions.Where(question => question.Test.Topic == 6).ToList();
-        private static List<Questions> questions_Test_7 = db.Questions.Where(question => question.Test.Topic == 7).ToList();
+        private static ObservableCollection<User> users_Admin = db.Users.Local.ToObservableCollection();
+        private static ObservableCollection<Questions> questions_Admin = db.Questions.Local.ToObservableCollection();
+        private static ObservableCollection<Test> tests_Admin = db.Tests.Local.ToObservableCollection();
+
         #endregion
 
         private static bool app_started_flag = false;

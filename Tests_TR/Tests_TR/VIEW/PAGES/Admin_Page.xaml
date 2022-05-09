@@ -39,7 +39,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Users_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Login}" Header="Логин" />
                             <DataGridTextColumn Binding="{Binding Path=Password}" Header="Пароль" />
@@ -61,23 +61,17 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Тест 1">
+            <TabItem Header="Тесты">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Questions_Test_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Tests_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Question, Mode=TwoWay}" Header="Вопрос" />
-                            <DataGridTextColumn Binding="{Binding Path=Answer_1, Mode=TwoWay}" Header="Ответ 1" />
-                            <DataGridTextColumn Binding="{Binding Path=Answer_2, Mode=TwoWay}" Header="Ответ 2" />
-                            <DataGridTextColumn Binding="{Binding Path=Answer_3, Mode=TwoWay}" Header="Ответ 3" />
-                            <DataGridTextColumn Binding="{Binding Path=Answer_4, Mode=TwoWay}" Header="Ответ 4" />
-                            <DataGridTextColumn Binding="{Binding Path=Right_Answer, Mode=TwoWay}" Header="Правильный ответ" />
-                            <DataGridTextColumn Binding="{Binding Path=Image, Mode=TwoWay}" Header="Путь к картинке" />
-                            <DataGridTextColumn Binding="{Binding Path=Test.Id, Mode=TwoWay}" Header="Глава теста" />
-
+                            <DataGridTextColumn Binding="{Binding Path=Id, Mode=TwoWay}" Header="Id" />
+                            <DataGridTextColumn Binding="{Binding Path=Topic, Mode=TwoWay}" Header="Глава" />
+                            <DataGridTextColumn Binding="{Binding Path=Name, Mode=TwoWay}" Header="Название" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -87,32 +81,42 @@
                         Orientation="Horizontal">
                         <Button
                             Command="{Binding Update_Database}"
-                            CommandParameter="Прив"
+                            CommandParameter=""
                             Content="Обновить" />
                     </StackPanel>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Тест 2">
-                <Grid />
 
             </TabItem>
-            <TabItem Header="Тест 3">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Тест 4">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Тест 5">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Тест 6">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Тест 7">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Экзамен">
-                <Grid />
+            <TabItem Header="Вопросы">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Questions_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Test_Id, Mode=TwoWay}" Header="ID теста" />
+                            <DataGridTextColumn Binding="{Binding Path=Question, Mode=TwoWay}" Header="Вопрос" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_1, Mode=TwoWay}" Header="Ответ 1" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_2, Mode=TwoWay}" Header="Ответ 2" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_3, Mode=TwoWay}" Header="Ответ 3" />
+                            <DataGridTextColumn Binding="{Binding Path=Answer_4, Mode=TwoWay}" Header="Ответ 4" />
+                            <DataGridTextColumn Binding="{Binding Path=Right_Answer, Mode=TwoWay}" Header="Правильный ответ" />
+                            <DataGridTextColumn Binding="{Binding Path=Image, Mode=TwoWay}" Header="Путь к картинке" />
+                            <DataGridTextColumn Binding="{Binding Path=Paragraph, Mode=TwoWay}" Header="Параграф" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            Command="{Binding Update_Database}"
+                            CommandParameter=""
+                            Content="Обновить" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

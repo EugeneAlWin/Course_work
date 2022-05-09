@@ -29,7 +29,7 @@ namespace Tests_TR
                 {
                     if (login_Password[0] == "" || login_Password[1] == "") return;
 
-                    var temp_Acsess = users.Where(x => x.Login == login_Password[0] && x.Password == login_Password[1]).FirstOrDefault();
+                    var temp_Acsess = Users_Admin.Where(x => x.Login == login_Password[0] && x.Password == login_Password[1]).FirstOrDefault();
 
                     if (temp_Acsess != null)
                     {
