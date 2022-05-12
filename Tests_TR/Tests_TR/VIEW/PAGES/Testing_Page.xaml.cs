@@ -12,5 +12,11 @@
             DataContext = new PagesViewModel();
         }
 
+
+        private void TabItem_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            PagesViewModel.Switch_Tab_By_TabItem.Execute(PagesViewModel.SelectedIndex[0]);
+
+        }
     }
 }

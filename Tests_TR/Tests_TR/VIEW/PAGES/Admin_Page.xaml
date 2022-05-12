@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Tests_TR.VIEW.PAGES"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tests_tr="clr-namespace:Tests_TR"
     Title="Admin_Page"
@@ -39,7 +38,10 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Users_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid
+                        AutoGenerateColumns="False"
+                        ColumnWidth="*"
+                        ItemsSource="{Binding Users_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Login}" Header="Логин" />
                             <DataGridTextColumn Binding="{Binding Path=Password}" Header="Пароль" />
@@ -93,7 +95,10 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Questions_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid
+                        AutoGenerateColumns="False"
+                        ColumnWidth="*"
+                        ItemsSource="{Binding Questions_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Test_Id, Mode=TwoWay}" Header="ID теста" />
                             <DataGridTextColumn Binding="{Binding Path=Question, Mode=TwoWay}" Header="Вопрос" />

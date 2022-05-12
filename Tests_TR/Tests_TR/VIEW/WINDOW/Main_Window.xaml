@@ -8,9 +8,25 @@
     Title="Тесты ПДД 2077"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance Type=local:PagesViewModel}"
     Icon="/VIEW/RESOURCES/favicon.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <Window.InputBindings>
+        <KeyBinding
+            Key="Left"
+            Command="{Binding Switch_Tab}"
+            CommandParameter="false" />
+        <KeyBinding
+            Key="Right"
+            Command="{Binding Switch_Tab}"
+            CommandParameter="true" />
+        <KeyBinding
+            Key="Esc"
+            Command="{Binding Path=Switch_Page}"
+            CommandParameter="{Binding Pages_List[1]}" />
+
+    </Window.InputBindings>
     <Grid>
         <Frame
             Name="MainFrame"

@@ -11,21 +11,21 @@ namespace Tests_TR
         {
             return new(next_page =>
             {
-                if (!app_started_flag)
-                {
-                    app_started_flag = true;
 
-                }
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
 
 
-                if (next_page == login_Page)
+                if (next_page == login_Page)  //Logout
                 {
+                    var temp_Result = MessageBox.Show("Вы действительно хотите выйти из аккаунта?", "Выход из аккаунта", MessageBoxButton.YesNo);
+                    if (temp_Result == MessageBoxResult.No) return;
+
                     login_Password[0] = login_Password[1] = "";
                     NavService.Navigate(next_page);
                     selectedIndex[0] = 0; current_Page = (Page)next_page;
                 }
-                if (current_Page == login_Page)
+
+                if (current_Page == login_Page) //Login
                 {
                     if (login_Password[0] == "" || login_Password[1] == "") return;
 
