@@ -25,19 +25,32 @@
         <Setter Property="Background" Value="#c4c4c4" />
         <Setter Property="TabStripPlacement" Value="Left" />
     </Style>
-    <Style x:Key="Tab_Header_Untouched" TargetType="TabItem">
+
+    <Style x:Key="Tab_Header_Untouched" TargetType="TabItem" >
         <Setter Property="Width" Value="50" />
         <Setter Property="Height" Value="30" />
     </Style>
-    <Style x:Key="Tab_Header_Wrong" TargetType="TabItem">
-        <Setter Property="Width" Value="50" />
-        <Setter Property="Height" Value="30" />
-        <Setter Property="Background" Value="Red" />
+    <Style x:Key="Tab_Header_Wrong" TargetType="TabItem" BasedOn="{StaticResource Tab_Header_Untouched}">
+        <Setter Property="Background" Value="DarkRed" />
     </Style>
-    <Style x:Key="Tab_Header_Right" TargetType="TabItem">
-        <Setter Property="Width" Value="50" />
-        <Setter Property="Height" Value="30" />
+    <Style x:Key="Tab_Header_Right" TargetType="TabItem" BasedOn="{StaticResource Tab_Header_Untouched}">
         <Setter Property="Background" Value="Green" />
+    </Style>
+
+    <Style x:Key="Table_Wrong" TargetType="Grid">
+        <Setter Property="Background" Value="DarkRed" />
+    </Style>
+    <Style x:Key="Table_Untouched" TargetType="Grid">
+        <Setter Property="Background" Value="#c4c4c4" />
+    </Style>
+    <Style x:Key="Table_Right" TargetType="Grid">
+        <Setter Property="Background" Value="Green" />
+    </Style>
+    <Style x:Key="Table_Text" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="15" />
     </Style>
 
 
@@ -75,7 +88,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-
+    <!--#region Labels' styles-->
     <Style x:Key="Third_Answer" TargetType="TextBlock">
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock1, Path=Text}" Value="">
@@ -104,6 +117,120 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="Third_Answer3" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock5, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer3" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock6, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer4" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock7, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer4" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock8, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer5" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock9, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer5" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock10, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer6" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock11, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer6" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock12, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer7" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock13, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer7" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock14, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer8" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock15, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer8" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock16, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer9" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock17, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer9" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock18, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Third_Answer10" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock19, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="Fourth_Answer10" TargetType="TextBlock">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=TextBlock20, Path=Text}" Value="">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
     <!--#endregion-->
 
 

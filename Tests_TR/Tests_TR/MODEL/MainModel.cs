@@ -19,9 +19,9 @@ namespace Tests_TR.MODEL
         public DatabaseContext()
         {
             // Database.EnsureDeleted();
-            bool temp = Database.EnsureCreated();
+
+            Database.EnsureCreated();
             Load_Data();
-            //MessageBox.Show(temp ? "Бд создана" : "Бд существует");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -73,6 +73,7 @@ namespace Tests_TR.MODEL
             entity.Property(p => p.Paragraph).HasMaxLength(60);
             entity.Property(i => i.Image).HasMaxLength(150);
             entity.Property(t => t.Test_Id).IsRequired();
+
         }
         public void Load_Data()
         {

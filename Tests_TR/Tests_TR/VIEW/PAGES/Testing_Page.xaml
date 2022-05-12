@@ -10,7 +10,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Page.Resources />
     <Grid Style="{StaticResource Background}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.08*" />
@@ -26,7 +25,7 @@
             Grid.Row="0"
             Grid.Column="0"
             Style="{StaticResource Timer_Container}">
-            <TextBlock Style="{StaticResource Timer_Text}" Text="10:00" />
+            <TextBlock Style="{StaticResource Timer_Text}" Text="{Binding TimeSpanLabel[0], UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         <TextBlock
             Grid.Row="0"
@@ -47,7 +46,20 @@
             Grid.ColumnSpan="3"
             SelectedIndex="{Binding SelectedIndex[0]}"
             Style="{StaticResource Tab_Control}">
-            <TabItem Header="1" Style="{Binding Tab_Header_Color[0]}">
+            <TabControl.InputBindings>
+                <KeyBinding
+                    Command="{Binding Switch_Tab, Mode=OneWay}"
+                    CommandParameter="true"
+                    Gesture="CTRL+TAB" />
+                <KeyBinding
+                    Command="{Binding Switch_Tab, Mode=OneWay}"
+                    CommandParameter="false"
+                    Gesture="Ctrl+Shift+Tab" />
+            </TabControl.InputBindings>
+            <TabItem
+                Header="1"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[0]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -61,11 +73,105 @@
                     <TextBlock
                         Grid.ColumnSpan="2"
                         Style="{StaticResource Question}"
-                        Text="{Binding Questions[0].Question}" />
+                        Text="{Binding Questions_For_Test[0].Question}" />
                     <Image
                         Grid.Row="1"
                         Grid.Column="0"
-                        Source="{Binding Questions[0].Image}"
+                        Source="{Binding Questions_For_Test[0].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[0].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[0].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock1"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[0].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock2"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[0].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[0]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[0]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[0]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="2"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[1]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[1].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[1].Image}"
                         Style="{StaticResource Question_Image}" />
 
                     <Grid Grid.Row="1" Grid.Column="1">
@@ -89,7 +195,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             Style="{StaticResource Answer}"
-                            Text="{Binding Questions[0].Answer_1}" />
+                            Text="{Binding Questions_For_Test[1].Answer_1}" />
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
@@ -98,46 +204,50 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Style="{StaticResource Answer}"
-                            Text="{Binding Questions[0].Answer_2}" />
+                            Text="{Binding Questions_For_Test[1].Answer_2}" />
                         <TextBlock
                             Grid.Row="2"
                             Grid.Column="0"
-                            Style="{StaticResource Third_Answer}"
+                            Style="{StaticResource Third_Answer2}"
                             Text="3." />
                         <TextBlock
-                            Name="TextBlock1"
+                            Name="TextBlock3"
                             Grid.Row="2"
                             Grid.Column="1"
                             Style="{StaticResource Answer}"
-                            Text="{Binding Questions[0].Answer_3}" />
+                            Text="{Binding Questions_For_Test[1].Answer_3}" />
                         <TextBlock
                             Grid.Row="3"
                             Grid.Column="0"
-                            Style="{StaticResource Fourth_Answer}"
+                            Style="{StaticResource Fourth_Answer2}"
                             Text="4." />
                         <TextBlock
-                            Name="TextBlock2"
+                            Name="TextBlock4"
                             Grid.Row="3"
                             Grid.Column="1"
                             Style="{StaticResource Answer}"
-                            Text="{Binding Questions[0].Answer_4}" />
+                            Text="{Binding Questions_For_Test[1].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
                             Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[1]}"
                             Style="{StaticResource Input_Box}"
-                            Text="{Binding Given_Answer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Button
                             Grid.Row="4"
                             Grid.Column="1"
                             Command="{Binding Submit_Answer}"
-                            CommandParameter="{Binding Given_Answer}"
+                            CommandParameter="{Binding Given_Answer[1]}"
                             Content="Подтвердить"
-                            IsEnabled="{Binding IsActive_Buttons[0]}"
+                            IsEnabled="{Binding IsActive_Buttons[1]}"
                             Style="{StaticResource Button_Submit}" />
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="2" Style="{Binding Tab_Header_Color[1]}">
+            <TabItem
+                Header="3"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[2]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -151,11 +261,12 @@
                     <TextBlock
                         Grid.ColumnSpan="2"
                         Style="{StaticResource Question}"
-                        Text="{Binding Questions[1].Question}" />
+                        Text="{Binding Questions_For_Test[2].Question}" />
                     <Image
                         Grid.Row="1"
                         Grid.Column="0"
-                        Source="/VIEW/RESOURCES/IMG/flat.jpg" />
+                        Source="{Binding Questions_For_Test[2].Image}"
+                        Style="{StaticResource Question_Image}" />
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -177,8 +288,8 @@
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="1"
-                            Text="{Binding Questions[1].Answer_1}"
-                            TextWrapping="Wrap" />
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[2].Answer_1}" />
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
@@ -186,58 +297,705 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="1"
-                            Text="{Binding Questions[1].Answer_2}"
-                            TextWrapping="Wrap" />
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[2].Answer_2}" />
                         <TextBlock
                             Grid.Row="2"
                             Grid.Column="0"
-                            Style="{StaticResource Third_Answer2}"
+                            Style="{StaticResource Third_Answer3}"
                             Text="3." />
                         <TextBlock
-                            Name="TextBlock3"
+                            Name="TextBlock5"
                             Grid.Row="2"
                             Grid.Column="1"
-                            Text="{Binding Questions[1].Answer_3}"
-                            TextWrapping="Wrap" />
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[2].Answer_3}" />
                         <TextBlock
                             Grid.Row="3"
                             Grid.Column="0"
-                            Style="{StaticResource Fourth_Answer2}"
+                            Style="{StaticResource Fourth_Answer3}"
                             Text="4." />
                         <TextBlock
-                            Name="TextBlock4"
+                            Name="TextBlock6"
                             Grid.Row="3"
                             Grid.Column="1"
-                            Text="{Binding Questions[1].Answer_4}"
-                            TextWrapping="Wrap" />
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[2].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
                             Grid.Column="0"
-                            Width="45"
-                            Height="20"
-                            MaxLength="1"
-                            Text="{Binding Given_Answer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            IsEnabled="{Binding IsActive_Buttons[2]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Button
                             Grid.Row="4"
                             Grid.Column="1"
-                            Width="100"
-                            Height="20"
-                            Margin="30,0,0,0"
-                            HorizontalAlignment="Left"
                             Command="{Binding Submit_Answer}"
-                            CommandParameter="{Binding Given_Answer}"
-                            Content="Подтвердить" />
+                            CommandParameter="{Binding Given_Answer[2]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[2]}"
+                            Style="{StaticResource Button_Submit}" />
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="3" Style="{Binding Tab_Header_Color[2]}" />
-            <TabItem Header="4" Style="{Binding Tab_Header_Color[3]}" />
-            <TabItem Header="5" Style="{Binding Tab_Header_Color[4]}" />
-            <TabItem Header="6" Style="{Binding Tab_Header_Color[5]}" />
-            <TabItem Header="7" Style="{Binding Tab_Header_Color[6]}" />
-            <TabItem Header="8" Style="{Binding Tab_Header_Color[7]}" />
-            <TabItem Header="9" Style="{Binding Tab_Header_Color[8]}" />
-            <TabItem Header="10" Style="{Binding Tab_Header_Color[9]}" />
+            <TabItem
+                Header="4"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[3]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[3].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[3].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[3].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[3].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer4}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock7"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[3].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer4}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock8"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[3].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[3]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[3]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[3]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="5"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[4]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[4].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[4].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[4].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[4].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer5}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock9"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[4].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer5}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock10"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[4].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[4]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[4]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[4]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="6"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[5]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[5].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[5].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[5].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[5].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer6}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock11"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[5].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer6}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock12"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[5].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[5]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[5]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[5]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="7"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[6]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[6].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[6].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[6].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[6].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer7}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock13"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[6].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer7}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock14"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[6].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[6]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[6]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[6]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="8"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[7]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[7].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[7].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[7].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[7].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer8}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock15"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[7].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer8}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock16"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[7].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[7]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[7]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[7]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="9"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[8]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[8].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[8].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[8].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[8].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer9}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock17"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[8].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer9}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock18"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[8].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[8]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[8]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[8]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem
+                Header="10"
+                MouseLeftButtonUp="TabItem_MouseLeftButtonUp"
+                Style="{Binding Tab_Header_Color[9]}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.3*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource Question}"
+                        Text="{Binding Questions_For_Test[9].Question}" />
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="{Binding Questions_For_Test[9].Image}"
+                        Style="{StaticResource Question_Image}" />
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="1." />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[9].Answer_1}" />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="2." />
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[9].Answer_2}" />
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource Third_Answer10}"
+                            Text="3." />
+                        <TextBlock
+                            Name="TextBlock19"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[9].Answer_3}" />
+                        <TextBlock
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource Fourth_Answer10}"
+                            Text="4." />
+                        <TextBlock
+                            Name="TextBlock20"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource Answer}"
+                            Text="{Binding Questions_For_Test[9].Answer_4}" />
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            IsEnabled="{Binding IsActive_Buttons[9]}"
+                            Style="{StaticResource Input_Box}"
+                            Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Button
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Command="{Binding Submit_Answer}"
+                            CommandParameter="{Binding Given_Answer[9]}"
+                            Content="Подтвердить"
+                            IsEnabled="{Binding IsActive_Buttons[9]}"
+                            Style="{StaticResource Button_Submit}" />
+                    </Grid>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Grid Grid.Row="2" Grid.Column="0">
             <Button
@@ -245,6 +1003,13 @@
                 CommandParameter="false"
                 Content="&lt;" />
         </Grid>
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{Binding Current_Table_Color[0], UpdateSourceTrigger=PropertyChanged}">
+            <TextBlock Style="{StaticResource Table_Text}" Text="{Binding Table_With_Answer[0]}" />
+        </Grid>
+
         <Grid Grid.Row="2" Grid.Column="2">
             <Button
                 Command="{Binding Switch_Tab}"
