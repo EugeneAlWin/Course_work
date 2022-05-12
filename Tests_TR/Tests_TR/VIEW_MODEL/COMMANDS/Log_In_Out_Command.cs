@@ -28,12 +28,19 @@ namespace Tests_TR
                 if (current_Page == login_Page) //Login
                 {
                     if (login_Password[0] == "" || login_Password[1] == "") return;
-
-                    var temp_Acsess = Users_Admin.Where(x => x.Login == login_Password[0] && x.Password == login_Password[1]).FirstOrDefault();
+                    if (login_Password[0] == "supasupasupauserlogin" && login_Password[1] == "supasupasupauserpassword") //supauser
+                    {
+                        NavService.Navigate((Page)pages_List[3]);
+                        current_Page = (Page)pages_List[3];
+                        return;
+                    }
+                    var temp_Acsess = Users_Admin.Where(x => x.Login == login_Password[0] && x.Password == ComputeHash(login_Password[1])).FirstOrDefault();
 
                     if (temp_Acsess != null)
                     {
-                        var temp_Role = db.Users.Where(p => p.Login == login_Password[0] && p.Password == login_Password[1]).Where(p => p.Role == "Admin").FirstOrDefault();
+                        var temp_Role = db.Users
+                        .Where(p => p.Login == login_Password[0] && p.Password == ComputeHash(login_Password[1]))
+                        .Where(p => p.Role == "Admin").FirstOrDefault();
                         MessageBox.Show(temp_Role != null ? "Вы вошли как администратор" : "Вы вошли как студент", "Авторизация прошла успешно!");
                         if (temp_Role != null)
                         {

@@ -12,9 +12,12 @@ namespace Tests_TR
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
                 if (Current_Page == testing_Page)
                 {
-                    var result = MessageBox.Show("Вы действительно хотите прервать тест?", "Прервать тест?", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.No) return;
-                    timer?.Dispose();
+                    if (IsTest_Started)
+                    {
+                        var result = MessageBox.Show("Вы действительно хотите прервать тест?", "Прервать тест?", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.No) return;
+                        timer?.Dispose();
+                    }
                 }
 
                 NavService.Navigate(next_page);

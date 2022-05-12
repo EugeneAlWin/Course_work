@@ -7,13 +7,13 @@ insert into Tests (Id, Topic, Name)  values
 insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4, Right_Answer, Paragraph, Image) values 
 	(
 		1,
-		N'Как следует поступить водителю желтого легкового автомобиля в показанной ситуации?',
-		N'Остановиться только на левой обочине (А)',
-		N'Остановиться только на правой обочине (Б)',
-		N'Остановиться на правой (Б) или на левой (А) обочине',
+		'Как следует поступить водителю желтого легкового автомобиля в показанной ситуации?',
+		'Остановиться только на левой обочине (А)',
+		'Остановиться только на правой обочине (Б)',
+		'Остановиться на правой (Б) или на левой (А) обочине',
 		null, -- Answer_4
-		N'3', --Right_Answer
-		N'Изучите п.26 ПДД', -- Paragraph
+		'3', --Right_Answer
+		'Изучите п.26 ПДД', -- Paragraph
 		'/VIEW/RESOURCES/IMG/1-1-1.jpg' -- Image
 	),
 	(
@@ -120,12 +120,10 @@ insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4
 
 insert into Users values
 	(
-		'login',
-		'94136721522184041138120822911114119841391159661131061711892144217239114292166216',
+		'supasupasupauserlogin',
+		'supasupasupauserpassword',
 		'admin',
 		'Гончаревич',
 		'Евгений',
 		'Витальевич'
 	);
-
-	GO

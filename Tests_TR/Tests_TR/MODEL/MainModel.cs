@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
+using System.Text;
+using System.Windows;
 #nullable disable
 namespace Tests_TR.MODEL
 {
@@ -18,9 +21,15 @@ namespace Tests_TR.MODEL
 
         public DatabaseContext()
         {
-            // Database.EnsureDeleted();
+            //Database.EnsureDeleted();
 
-            Database.EnsureCreated();
+            var temp_Result = Database.EnsureCreated();
+            if (temp_Result)
+            {
+                var sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\DefaultSql.txt");
+                Database.ExecuteSqlRaw(sql_Raw);
+
+            }
             Load_Data();
         }
 
@@ -42,7 +51,7 @@ namespace Tests_TR.MODEL
             e.HasIndex(i => i.Login).IsUnique();
             e.Property(l => l.Login).HasMaxLength(30).IsRequired();
             e.HasIndex(i => i.Password).IsUnique();
-            e.Property(p => p.Password).HasMaxLength(30).IsRequired();
+            e.Property(p => p.Password).IsRequired();
             e.Property(r => r.Role).HasMaxLength(6).IsRequired();
             e.Property(n => n.Name).HasMaxLength(30).IsRequired();
             e.Property(ln => ln.Last_Name).HasMaxLength(30).IsRequired();
@@ -116,11 +125,17 @@ namespace Tests_TR.MODEL
     {
         public int Id { get; set; }
         public string Login { get; set; }
-        public string Password { get; set; }
+        public string Password
+        {
+            get => password;
+            set => password = PagesViewModel.ComputeHash(value);
+        }
         public string Role { get; set; }
         public string Name { get; set; }
         public string Last_Name { get; set; }
         public string Father_Name { get; set; }
+
+        private string password;
         public override string ToString()
         {
             return $"{Id}-{Login}-{Password}-{Role}";

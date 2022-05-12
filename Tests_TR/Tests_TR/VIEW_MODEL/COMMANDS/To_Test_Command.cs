@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Windows;
 using System.Windows.Navigation;
 
 namespace Tests_TR
@@ -11,16 +9,17 @@ namespace Tests_TR
     {
         private static TimeSpan timeSpan;
         private static readonly TimerCallback tcb = new(Timer_Tick);
+        private static readonly TimeSpan border = new(0, 0, 0);
+        private static readonly TimeSpan interval = new(0, 0, 1);
         private static Timer? timer;
 
         static void Timer_Tick(object? o)
         {
-            timeSpan = timeSpan.Subtract(new(0, 0, 1));
+            timeSpan = timeSpan.Subtract(interval);
             timeSpanLabel[0] = timeSpan.ToString("mm\\:ss");
-            if (timeSpan.Equals(new(0, 0, 0)))
+            if (timeSpan.Equals(border))
             {
-                timer?.Dispose();
-                //MessageBox.Show("Время вышло");
+                if (IsTest_Started) Check_Test();
             }
 
         }
@@ -29,10 +28,11 @@ namespace Tests_TR
 
             return new(num_of_test => //Tests (page) navigation
             {
+
                 testing_Page = new();
                 timeSpan = new(0, 10, 0);
                 timeSpanLabel[0] = timeSpan.ToString("mm\\:ss");
-
+                IsTest_Started = true;
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
                 NavService.Navigate(testing_Page);
                 current_Page = testing_Page;

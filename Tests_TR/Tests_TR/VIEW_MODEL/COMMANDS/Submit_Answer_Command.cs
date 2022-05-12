@@ -26,38 +26,45 @@ namespace Tests_TR
                clicks += 1;
                if (clicks == 10)  //end of test
                {
-                   for (byte i = 0; i < 10; i++)
-                   {
-                       if (given_Answers[i] == correct_Answers[i]) correct_Answers_count += 1;
-
-                   }
-                   string ex_or_test = selectedIndex[0] == 0 ? "Экзамен" : "Тест",
-                        passed_or_not = correct_Answers_count >= 9 ? "СДАН" : "НЕ СДАН",
-                        expexted_answers = "",
-                        real_answers = "";
-
-                   foreach (var item in correct_Answers)
-                   {
-                       expexted_answers += item + "-";
-                   }
-                   foreach (var item in given_Answers)
-                   {
-                       real_answers += item + "-";
-                   }
-
-                   var Yes_Or_No = MessageBox.Show(
-                       $"{ex_or_test} {passed_or_not}!\n" +
-                       $"Правильных ответов: {correct_Answers_count} из 10\n" +
-                       $"Правильные ответы: {expexted_answers}\n" +
-                       $"Ваши ответы: {real_answers}\n" +
-                       $"Хотите закрыть тест?",
-                       "Результаты", MessageBoxButton.YesNo);
-                   correct_Answers_count = 0;
-                   clicks = 0;
-                   if (Yes_Or_No == MessageBoxResult.Yes) switch_Page.Execute(main_Page);
-                   else return;
+                   Check_Test();
                }
            });
         }
+        private static void Check_Test()
+        {
+            timer?.Dispose();
+            for (byte i = 0; i < 10; i++)
+            {
+                if (given_Answers[i] == correct_Answers[i]) correct_Answers_count += 1;
+
+            }
+            string ex_or_test = selectedIndex[0] == 0 ? "Экзамен" : "Тест",
+                 passed_or_not = correct_Answers_count >= 9 ? "СДАН" : "НЕ СДАН",
+                 expexted_answers = "",
+                 real_answers = "";
+
+            foreach (var item in correct_Answers)
+            {
+                expexted_answers += item + "-";
+            }
+            foreach (var item in given_Answers)
+            {
+                real_answers += item + "-";
+            }
+
+            var Yes_Or_No = MessageBox.Show(
+                $"{ex_or_test} {passed_or_not}!\n" +
+                $"Правильных ответов: {correct_Answers_count} из 10\n" +
+                $"Правильные ответы: {expexted_answers}\n" +
+                $"Ваши ответы: {real_answers}\n" +
+                $"Хотите закрыть тест?",
+                "Результаты", MessageBoxButton.YesNo);
+            correct_Answers_count = 0;
+            clicks = 0;
+            IsTest_Started = false;
+            if (Yes_Or_No == MessageBoxResult.Yes) switch_Page.Execute(main_Page);
+            else return;
+        }
+
     }
 }

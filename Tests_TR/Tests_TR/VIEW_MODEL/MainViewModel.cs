@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using Tests_TR.MODEL;
@@ -114,6 +116,7 @@ namespace Tests_TR
         private static ObservableCollection<string> timeSpanLabel = new() { "10:00" };
 
         private static readonly List<string> paragraphs_For_Test = new();
+        private static bool IsTest_Started = false;
 
         #endregion
 
@@ -121,6 +124,7 @@ namespace Tests_TR
         private static ObservableCollection<User> users_Admin = db.Users.Local.ToObservableCollection();
         private static ObservableCollection<Questions> questions_Admin = db.Questions.Local.ToObservableCollection();
         private static ObservableCollection<Test> tests_Admin = db.Tests.Local.ToObservableCollection();
+        private static readonly SHA256 sha256 = SHA256.Create();
 
         #endregion
 
@@ -141,9 +145,13 @@ namespace Tests_TR
         #endregion
     }
 
-    public partial class PagesViewModel : INotifyPropertyChanged //INotifyPropertyChanged
+    public partial class PagesViewModel : INotifyPropertyChanged //INotifyPropertyChanged + Methods
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        public static string ComputeHash(string str)
+        {
+            return Encoding.UTF8.GetString(sha256.ComputeHash(Encoding.UTF8.GetBytes(str)));
+        }
     }
 }
