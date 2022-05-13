@@ -36,7 +36,7 @@ namespace Tests_TR
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
                 NavService.Navigate(testing_Page);
                 current_Page = testing_Page;
-                given_Answers.Clear();
+                given_Answers = new(10);
                 questions_For_Test.Clear();
                 correct_Answers.Clear();
                 given_Answer.Clear();
@@ -51,7 +51,7 @@ namespace Tests_TR
                     table_Colors.Insert(i, table_Untouched);
                     isActive_Buttons.Insert(i, "True");
                     given_Answer.Insert(i, "");
-                    //given_Answers.Insert(i, "");
+                    // given_Answers.Insert(i, "");
                     Table_With_Answers.Insert(i, "");
 
                 };

@@ -111,7 +111,7 @@ namespace Tests_TR
 
         private static List<Page> pages_List = new() { login_Page, main_Page, testing_Page, admin_Page, rules_Page };//0, 1, 2, 3, 4
         private static readonly List<string> correct_Answers = new();
-        private static readonly List<string> given_Answers = new(10);
+        private static List<string> given_Answers = new(10);
 
         private static ObservableCollection<string> timeSpanLabel = new() { "10:00" };
 

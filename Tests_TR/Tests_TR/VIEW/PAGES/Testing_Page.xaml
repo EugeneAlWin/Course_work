@@ -31,7 +31,7 @@
             Grid.Row="0"
             Grid.Column="1"
             Style="{StaticResource Topic}"
-            Text="Topic on test 1292302130" />
+            Text="Тестирование" />
         <Grid Grid.Row="0" Grid.Column="2">
             <Button
                 Command="{Binding Path=Switch_Page}"

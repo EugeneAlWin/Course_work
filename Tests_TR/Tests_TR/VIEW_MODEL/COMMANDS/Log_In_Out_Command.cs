@@ -55,10 +55,10 @@ namespace Tests_TR
                     }
                     else
                     {
-                        //MessageBox.Show("Неверно введен логин или пароль", "Ошибка авторизации!");
+                        MessageBox.Show("Неверно введен логин или пароль", "Ошибка авторизации!");
                         ///////////////////////////////////
-                        NavService.Navigate(next_page);
-                        selectedIndex[0] = 0; current_Page = (Page)next_page;
+                        //NavService.Navigate(next_page);
+                        //selectedIndex[0] = 0; current_Page = (Page)next_page;
                         //////////////////////////////////
                     };
                 }

@@ -63,7 +63,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Тесты">
+            <!--<TabItem Header="Тесты">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -90,7 +90,7 @@
                     </StackPanel>
                 </Grid>
 
-            </TabItem>
+            </TabItem>-->
             <TabItem Header="Вопросы">
                 <Grid>
                     <Grid.RowDefinitions>
