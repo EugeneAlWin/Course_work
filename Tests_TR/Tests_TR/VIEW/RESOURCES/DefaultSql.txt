@@ -158,7 +158,7 @@ insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4
 		2,
 		'Показанный запрещающий дорожный знак с табличкой обязывает водителей соблюдать дистанцию:',
 		'Не менее 50 метров на протяжении 250 метров.',
-		'От 50 метров до 50 метров.',
+		'От 50 метров до 250 метров.',
 		'Менее 50 метров на протяжении 250 метров.',
 		null,
 		'1',
@@ -357,9 +357,9 @@ insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4
 
 insert into Users values
 	(
-		'supasupasupauserlogin',
-		'supasupasupauserpassword',
-		'admin',
+		'student',
+		'�c���cB��F�����PF��ƪH�<hE��J',
+		'user',
 		'Гончаревич',
 		'Евгений',
 		'Витальевич'

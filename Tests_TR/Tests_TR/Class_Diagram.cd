@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tests_TR.PagesViewModel">
+    <Position X="0.5" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>BwWLoA9kKOMkIGVSEYAeIJPlgUAVxUAACMmCSZAChRA=</HashCode>
+      <FileName>VIEW_MODEL\COMMANDS\Log_In_Out_Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests_TR.RelayCommand">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VIEW_MODEL\COMMANDS\RelayCommandClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Tests_TR.MODEL.MainModel">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MODEL\MainModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests_TR.MODEL.DatabaseContext">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAACAAAQAAEAAAAAAAAAAAEAAAgAgEAAAAAAAAAAA=</HashCode>
+      <FileName>MODEL\MainModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests_TR.MODEL.Test">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAACAAAAA=</HashCode>
+      <FileName>MODEL\MainModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests_TR.MODEL.Questions">
+    <Position X="6.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACEAABAAAAAAAAAAAAAAAAAAAAABAFCAAACAAABAI=</HashCode>
+      <FileName>MODEL\MainModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests_TR.MODEL.User">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAEAAAAAQAAAAAAAACAABQAgAAAAA=</HashCode>
+      <FileName>MODEL\MainModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

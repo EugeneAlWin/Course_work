@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Questions.sql" />
+    <None Remove="VIEW\RESOURCES\DefaultSql.txt" />
     <None Remove="VIEW\RESOURCES\favicon.ico" />
     <None Remove="VIEW\RESOURCES\IMG\1-1-1.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\1-1-2.jpg" />
@@ -49,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="VIEW\RESOURCES\DefaultSql.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="VIEW\RESOURCES\IMG\1-1-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -88,9 +92,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="VIEW\RESOURCES\DefaultSql.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="VIEW\RESOURCES\img\квартира1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

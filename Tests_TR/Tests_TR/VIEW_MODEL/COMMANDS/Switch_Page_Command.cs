@@ -10,6 +10,7 @@ namespace Tests_TR
             return new(next_page => //Page navigation
             {
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
+
                 if (Current_Page == testing_Page)
                 {
                     if (IsTest_Started)

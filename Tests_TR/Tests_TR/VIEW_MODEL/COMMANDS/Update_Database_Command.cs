@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace Tests_TR
+﻿namespace Tests_TR
 {
     public partial class PagesViewModel
     {
@@ -8,20 +6,8 @@ namespace Tests_TR
         {
             return new(cap =>
           {
-              Save_Data();
+              unit_Of_Work.SaveChangesAsync();
           });
-        }
-        private static async void Save_Data()
-        {
-            try
-            {
-                await db.SaveChangesAsync();
-                MessageBox.Show("Данные успешно добавлены!", "Успех!");
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Ошибка при обновлении базы данных.\nПроверьте корректность данных!", "Ошибка сохранения!");
-            }
         }
     }
 }

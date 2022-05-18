@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -13,6 +11,25 @@ namespace Tests_TR
 
     public partial class PagesViewModel //Props
     {
+
+
+        private static string real_Password = "";
+        private static byte fake_Password_Length = 0;
+        public static string Fake_Password
+        {
+            get
+            {
+                string temp_string = "";
+                for (byte i = 0; i < real_Password.Length; i++) temp_string += "*";
+                return temp_string;
+            }
+            set
+            {
+                real_Password = value.Length < fake_Password_Length ? real_Password[..value.Length] : real_Password + value[fake_Password_Length..];
+                fake_Password_Length = (byte)value.Length;
+            }
+        }
+
         public static ObservableCollection<string> Given_Answer
         {
             get => given_Answer;
@@ -32,7 +49,6 @@ namespace Tests_TR
 
             }
         }
-        private static string pF = "";
 
         public static Page Current_Page { get => current_Page; set => current_Page = value; }
         public static List<Page> Pages_List { get => pages_List; set => pages_List = value; }
@@ -80,8 +96,7 @@ namespace Tests_TR
 
     public partial class PagesViewModel //Fields
     {
-        private static readonly DatabaseContext db = new();
-
+        private static readonly Unit_Of_Work unit_Of_Work = new();
         private static readonly Login_Page login_Page = new(); //Awailable page
         private static readonly Main_Page main_Page = new(); //Awailable page
         private static Testing_Page testing_Page = new(); //Awailable page
@@ -105,7 +120,7 @@ namespace Tests_TR
 
         private static ObservableCollection<sbyte> selectedIndex = new() { 0 }; //Index of tab
         private static ObservableCollection<Style> tab_Header_Color = new();
-        private static ObservableCollection<string> login_Password = new() { "", "" };
+        private static ObservableCollection<string> login_Password = new() { "", Fake_Password };
         private static ObservableCollection<string> isActive_Buttons = new();
         private static ObservableCollection<Questions> questions_For_Test = new();
 
@@ -117,13 +132,15 @@ namespace Tests_TR
 
         private static readonly List<string> paragraphs_For_Test = new();
         private static bool IsTest_Started = false;
+        private static string pF = "";
+
 
         #endregion
 
         #region Admin_Region
-        private static ObservableCollection<User> users_Admin = db.Users.Local.ToObservableCollection();
-        private static ObservableCollection<Questions> questions_Admin = db.Questions.Local.ToObservableCollection();
-        private static ObservableCollection<Test> tests_Admin = db.Tests.Local.ToObservableCollection();
+        private static ObservableCollection<User> users_Admin = unit_Of_Work.Users.GetAllToObservableCollection();
+        private static ObservableCollection<Questions> questions_Admin = unit_Of_Work.Questions.GetAllToObservableCollection();
+        private static ObservableCollection<Test> tests_Admin = unit_Of_Work.Tests.GetAllToObservableCollection();
         private static readonly SHA256 sha256 = SHA256.Create();
 
         #endregion
@@ -145,10 +162,8 @@ namespace Tests_TR
         #endregion
     }
 
-    public partial class PagesViewModel : INotifyPropertyChanged //INotifyPropertyChanged + Methods
+    public partial class PagesViewModel //ComputeHash
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         public static string ComputeHash(string str)
         {
             return Encoding.UTF8.GetString(sha256.ComputeHash(Encoding.UTF8.GetBytes(str)));

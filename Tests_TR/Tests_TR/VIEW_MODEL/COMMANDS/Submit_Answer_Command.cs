@@ -43,14 +43,9 @@ namespace Tests_TR
                  expexted_answers = "",
                  real_answers = "";
 
-            foreach (var item in correct_Answers)
-            {
-                expexted_answers += item + "-";
-            }
-            foreach (var item in given_Answers)
-            {
-                real_answers += item + "-";
-            }
+            foreach (var item in correct_Answers) expexted_answers += item + "-";
+
+            foreach (var item in given_Answers) real_answers += item + "-";
 
             var Yes_Or_No = MessageBox.Show(
                 $"{ex_or_test} {passed_or_not}!\n" +

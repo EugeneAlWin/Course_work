@@ -1,17 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
-using System.Windows;
+
 #nullable disable
 namespace Tests_TR.MODEL
 {
-    public class MainModel
-    {
-    }
-
     public class DatabaseContext : DbContext
     {
 
@@ -26,7 +24,10 @@ namespace Tests_TR.MODEL
             var temp_Result = Database.EnsureCreated();
             if (temp_Result)
             {
+                //get bytes from string
+                //var name = "Course_Work";
                 var sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\DefaultSql.txt");
+                //var pass = Encoding.UTF8.GetString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes("fitfit")));
                 Database.ExecuteSqlRaw(sql_Raw);
 
             }
@@ -114,11 +115,6 @@ namespace Tests_TR.MODEL
         public string Paragraph { get; set; }
         public string Image { get; set; }
         public Test Test { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Id}-{Question}-{Answer_1}-{Answer_2}-{Answer_3}-{Answer_4}-{Right_Answer}-{Image}";
-        }
     }
 
     public class User
@@ -136,10 +132,6 @@ namespace Tests_TR.MODEL
         public string Father_Name { get; set; }
 
         private string password;
-        public override string ToString()
-        {
-            return $"{Id}-{Login}-{Password}-{Role}";
-        }
     }
 
 }

@@ -51,8 +51,9 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Width="121"
-                    VerticalAlignment="Center"
-                    Text="{Binding Login_Password[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    VerticalAlignment="Center" 
+                    Text="{Binding Fake_Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
                 <Button
                     x:Name="LogIn"
                     Grid.Row="2"
