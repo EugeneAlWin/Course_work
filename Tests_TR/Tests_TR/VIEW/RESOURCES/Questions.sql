@@ -354,13 +354,3 @@ insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4
 		'Изучите п.110 ПДД',
 		'/VIEW/RESOURCES/IMG/3-1-10.jpg'
 	);
-
-insert into Users values
-	(
-		'student',
-		'{1}',
-		'user',
-		'Гончаревич',
-		'Евгений',
-		'Витальевич'
-	);

@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Security.Cryptography;
-using System.Text;
+using System.Threading.Tasks;
 
 #nullable disable
 namespace Tests_TR.MODEL
@@ -24,11 +23,11 @@ namespace Tests_TR.MODEL
             var temp_Result = Database.EnsureCreated();
             if (temp_Result)
             {
-                //get bytes from string
-                //var name = "Course_Work";
-                var sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\DefaultSql.txt");
-                //var pass = Encoding.UTF8.GetString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes("fitfit")));
-                Database.ExecuteSqlRaw(sql_Raw);
+                string sql_Raw = "";
+                var taskA = Task.Run(() => sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\Questions.sql"));
+                string Server_Name = ConfigurationManager.ConnectionStrings["NameOfDatabase"].ConnectionString;
+                taskA.Wait();
+                Database.ExecuteSqlRaw(String.Format(sql_Raw, Server_Name));
 
             }
             Load_Data();
@@ -87,6 +86,7 @@ namespace Tests_TR.MODEL
         }
         public void Load_Data()
         {
+
             Users.Load();
             Questions.Load();
             Tests.Load();

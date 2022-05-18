@@ -1,4 +1,4 @@
-﻿use preCourse2
+﻿use {0}
 
 insert into Tests (Id, Topic, Name)  values
 		(0,0,'Зачет по теме № 0'),
@@ -353,14 +353,4 @@ insert into Questions (Test_Id, Question, Answer_1, Answer_2, Answer_3, Answer_4
 		'2',
 		'Изучите п.110 ПДД',
 		'/VIEW/RESOURCES/IMG/3-1-10.jpg'
-	);
-
-insert into Users values
-	(
-		'student',
-		'�c���cB��F�����PF��ƪH�<hE��J',
-		'user',
-		'Гончаревич',
-		'Евгений',
-		'Витальевич'
 	);

@@ -65,7 +65,6 @@ namespace Tests_TR
                           table_Colors.Insert(i, table_Untouched);
                           isActive_Buttons.Insert(i, "True");
                           given_Answer.Insert(i, "");
-                          // given_Answers.Insert(i, "");
                           Table_With_Answers.Insert(i, "");
 
                       };
