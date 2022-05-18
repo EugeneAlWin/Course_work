@@ -5,8 +5,8 @@ namespace Tests_TR
 {
     public class RelayCommand : ICommand
     {
-        private readonly Action<object>? execute = null;
-        private readonly Func<object, bool>? canExecute = null;
+        private readonly Action<object>? execute;
+        private readonly Func<object, bool>? canExecute;
 
         public event EventHandler? CanExecuteChanged
         {
@@ -20,12 +20,8 @@ namespace Tests_TR
             this.canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return canExecute == null || canExecute.Invoke(parameter);
-        }
+        public bool CanExecute(object parameter) => canExecute == null || canExecute.Invoke(parameter);
 
         public void Execute(object parameter) => execute?.Invoke(parameter);
-
     }
 }

@@ -8,6 +8,7 @@ namespace Tests_TR.MODEL
         private readonly DatabaseContext db;
         public Tests_Repository(DatabaseContext context) => db = context;
         public IEnumerable<Test> GetAll() => db.Tests;
+
         public ObservableCollection<Test> GetAllToObservableCollection() => db.Tests.Local.ToObservableCollection();
     }
 }

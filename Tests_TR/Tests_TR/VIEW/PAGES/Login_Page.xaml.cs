@@ -12,6 +12,5 @@ namespace Tests_TR.VIEW.PAGES
             InitializeComponent();
             DataContext = new PagesViewModel();
         }
-
     }
 }

@@ -51,7 +51,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Width="121"
-                    VerticalAlignment="Center" 
+                    VerticalAlignment="Center"
                     Text="{Binding Fake_Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <Button

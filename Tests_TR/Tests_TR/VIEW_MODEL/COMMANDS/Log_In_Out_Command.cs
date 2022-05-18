@@ -13,7 +13,6 @@ namespace Tests_TR
             {
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
 
-
                 if (next_page == login_Page)  //Logout
                 {
                     var temp_Result = MessageBox.Show("Вы действительно хотите выйти из аккаунта?", "Выход из аккаунта", MessageBoxButton.YesNo);
@@ -29,12 +28,14 @@ namespace Tests_TR
                 if (current_Page == login_Page) //Login
                 {
                     if (login_Password[0] == "" || real_Password == "") return;
+
                     if (login_Password[0] == "supasupauserlogin" && real_Password == "supasupauserpassword") //supauser
                     {
                         NavService.Navigate((Page)pages_List[3]);
                         current_Page = (Page)pages_List[3];
                         return;
                     }
+
                     var temp_Acsess = Users_Admin.Where(x => x.Login == login_Password[0] && x.Password == ComputeHash(real_Password)).FirstOrDefault();
 
                     if (temp_Acsess != null)
@@ -42,7 +43,9 @@ namespace Tests_TR
                         var temp_Role = unit_Of_Work.Users.GetAll()
                         .Where(p => p.Login == login_Password[0] && p.Password == ComputeHash(real_Password))
                         .Where(p => p.Role == "admin").FirstOrDefault();
+
                         MessageBox.Show(temp_Role != null ? "Вы вошли как администратор" : "Вы вошли как студент", "Авторизация прошла успешно!");
+
                         if (temp_Role != null)
                         {
                             NavService.Navigate((Page)pages_List[3]);
@@ -57,13 +60,11 @@ namespace Tests_TR
                     else
                     {
                         MessageBox.Show("Неверно введен логин или пароль", "Ошибка авторизации!");
-                    };
+                    }
+;
                 }
-
             }
            );
         }
-
     }
-
 }
