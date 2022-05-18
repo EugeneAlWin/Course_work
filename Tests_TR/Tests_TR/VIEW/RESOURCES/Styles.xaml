@@ -26,14 +26,20 @@
         <Setter Property="TabStripPlacement" Value="Left" />
     </Style>
 
-    <Style x:Key="Tab_Header_Untouched" TargetType="TabItem" >
+    <Style x:Key="Tab_Header_Untouched" TargetType="TabItem">
         <Setter Property="Width" Value="50" />
         <Setter Property="Height" Value="30" />
     </Style>
-    <Style x:Key="Tab_Header_Wrong" TargetType="TabItem" BasedOn="{StaticResource Tab_Header_Untouched}">
+    <Style
+        x:Key="Tab_Header_Wrong"
+        BasedOn="{StaticResource Tab_Header_Untouched}"
+        TargetType="TabItem">
         <Setter Property="Background" Value="DarkRed" />
     </Style>
-    <Style x:Key="Tab_Header_Right" TargetType="TabItem" BasedOn="{StaticResource Tab_Header_Untouched}">
+    <Style
+        x:Key="Tab_Header_Right"
+        BasedOn="{StaticResource Tab_Header_Untouched}"
+        TargetType="TabItem">
         <Setter Property="Background" Value="Green" />
     </Style>
 

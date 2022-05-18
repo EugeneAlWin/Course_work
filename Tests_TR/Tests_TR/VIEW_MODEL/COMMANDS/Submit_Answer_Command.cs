@@ -1,11 +1,12 @@
 ﻿using System.Windows;
+
 namespace Tests_TR
 {
     public partial class PagesViewModel
     {
-        private static byte correct_Answers_count = 0;
-        private static byte clicks = 0;
+        private static byte correct_Answers_count = 0, clicks = 0;
         private static bool IsAnswer_Correct() => given_Answers[selectedIndex[0]] == correct_Answers[selectedIndex[0]];
+
         private static RelayCommand Submit_Answer_Command()
         {
             return new(given_answer_parameter => //Parameter
@@ -24,20 +25,22 @@ namespace Tests_TR
                Table_With_Answer[0] = Table_With_Answers[selectedIndex[0]];
 
                clicks += 1;
+
                if (clicks == 10)  //end of test
                {
                    Check_Test();
                }
            });
         }
+
         private static void Check_Test()
         {
             timer?.Dispose();
+
             for (byte i = 0; i < 10; i++)
-            {
                 if (given_Answers[i] == correct_Answers[i]) correct_Answers_count += 1;
 
-            }
+
             string ex_or_test = selectedIndex[0] == 0 ? "Экзамен" : "Тест",
                  passed_or_not = correct_Answers_count >= 9 ? "СДАН" : "НЕ СДАН",
                  expexted_answers = "",
@@ -54,12 +57,13 @@ namespace Tests_TR
                 $"Ваши ответы: {real_answers}\n" +
                 $"Хотите закрыть тест?",
                 "Результаты", MessageBoxButton.YesNo);
+
             correct_Answers_count = 0;
             clicks = 0;
             IsTest_Started = false;
+
             if (Yes_Or_No == MessageBoxResult.Yes) switch_Page.Execute(main_Page);
             else return;
         }
-
     }
 }

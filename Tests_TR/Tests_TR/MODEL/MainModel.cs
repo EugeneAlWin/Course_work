@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -11,25 +10,25 @@ namespace Tests_TR.MODEL
 {
     public class DatabaseContext : DbContext
     {
-
         public DbSet<Test> Tests { get; set; }
         public DbSet<Questions> Questions { get; set; }
         public DbSet<User> Users { get; set; }
 
         public DatabaseContext()
         {
-            //Database.EnsureDeleted();
+            // Database.EnsureDeleted();
 
             var temp_Result = Database.EnsureCreated();
+
             if (temp_Result)
             {
                 string sql_Raw = "";
                 var taskA = Task.Run(() => sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\Questions.sql"));
                 string Server_Name = ConfigurationManager.ConnectionStrings["NameOfDatabase"].ConnectionString;
                 taskA.Wait();
-                Database.ExecuteSqlRaw(String.Format(sql_Raw, Server_Name));
-
+                Database.ExecuteSqlRaw(string.Format(sql_Raw, Server_Name));
             }
+
             Load_Data();
         }
 
@@ -37,13 +36,14 @@ namespace Tests_TR.MODEL
         {
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(User_Builder);
             modelBuilder.Entity<Test>(Test_Builder);
             modelBuilder.Entity<Questions>(Questions_Builder);
-
         }
+
         private void User_Builder(EntityTypeBuilder<User> e)
         {
             e.HasKey(i => i.Id).HasName("PK_User");
@@ -58,6 +58,7 @@ namespace Tests_TR.MODEL
             e.Property(fn => fn.Father_Name).HasMaxLength(30);
             e.HasCheckConstraint("CK_User_Role", "role = 'admin' or role = 'user'");
         }
+
         private void Test_Builder(EntityTypeBuilder<Test> entity)
         {
             entity.HasKey(i => i.Id).HasName("PK_Test");
@@ -65,11 +66,14 @@ namespace Tests_TR.MODEL
             entity.HasIndex(i => i.Id).IsUnique();
             entity.Property(n => n.Name).HasMaxLength(50).IsRequired();
             entity.Property(t => t.Topic).IsRequired();
-            entity.HasMany(t => t.Questions).WithOne(q => q.Test)
+
+            entity.HasMany(t => t.Questions)
+                .WithOne(q => q.Test)
                 .HasForeignKey(q => q.Test_Id)
                 .HasConstraintName("FK_Test_Questions_Test_Id ")
                 .OnDelete(DeleteBehavior.Cascade);
         }
+
         private void Questions_Builder(EntityTypeBuilder<Questions> entity)
         {
             entity.HasKey(i => i.Id).HasName("PK_Questions");
@@ -82,11 +86,10 @@ namespace Tests_TR.MODEL
             entity.Property(p => p.Paragraph).HasMaxLength(60);
             entity.Property(i => i.Image).HasMaxLength(150);
             entity.Property(t => t.Test_Id).IsRequired();
-
         }
+
         public void Load_Data()
         {
-
             Users.Load();
             Questions.Load();
             Tests.Load();
@@ -99,7 +102,6 @@ namespace Tests_TR.MODEL
         public int Topic { get; set; }
         public string Name { get; set; }
         public List<Questions> Questions { get; set; } = new();
-
     }
 
     public class Questions
@@ -133,5 +135,4 @@ namespace Tests_TR.MODEL
 
         private string password;
     }
-
 }

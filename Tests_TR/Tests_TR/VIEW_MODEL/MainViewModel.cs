@@ -6,13 +6,11 @@ using System.Windows;
 using System.Windows.Controls;
 using Tests_TR.MODEL;
 using Tests_TR.VIEW.PAGES;
+
 namespace Tests_TR
 {
-
     public partial class PagesViewModel //Props
     {
-
-
         private static string real_Password = "";
         private static byte fake_Password_Length = 0;
         public static string Fake_Password
@@ -46,13 +44,11 @@ namespace Tests_TR
                     Given_Answer[selectedIndex[0]] = pF;
                 }
                 else return;
-
             }
         }
 
         public static Page Current_Page { get => current_Page; set => current_Page = value; }
         public static List<Page> Pages_List { get => pages_List; set => pages_List = value; }
-
 
         #region Test_Region
         public static string[] Tests_List { get => tests_List; }
@@ -88,11 +84,8 @@ namespace Tests_TR
 
         public PagesViewModel()
         {
-
         }
-
     }
-
 
     public partial class PagesViewModel //Fields
     {
@@ -131,9 +124,8 @@ namespace Tests_TR
         private static ObservableCollection<string> timeSpanLabel = new() { "10:00" };
 
         private static readonly List<string> paragraphs_For_Test = new();
-        private static bool IsTest_Started = false;
+        private static bool IsTest_Started;
         private static string pF = "";
-
 
         #endregion
 
@@ -144,9 +136,7 @@ namespace Tests_TR
         private static readonly SHA256 sha256 = SHA256.Create();
 
         #endregion
-
     }
-
 
     public partial class PagesViewModel //Commands' fields
     {

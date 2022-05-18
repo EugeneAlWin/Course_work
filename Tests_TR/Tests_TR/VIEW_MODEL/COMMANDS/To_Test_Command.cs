@@ -20,6 +20,7 @@ namespace Tests_TR
         {
             timeSpan = timeSpan.Subtract(interval);
             timeSpanLabel[0] = timeSpan.ToString("mm\\:ss");
+
             if (timeSpan.Equals(border))
             {
                 if (IsTest_Started)
@@ -28,20 +29,19 @@ namespace Tests_TR
                     MessageBox.Show("Тест провален!", "Время вышло!");
                     IsTest_Started = false;
                     Dispatcher dispatcher = Application.Current.Dispatcher;
+
                     dispatcher.Invoke(() =>
                     {
                         switch_Page.Execute(main_Page);
                     });
                 }
             }
-
         }
+
         private static RelayCommand To_Test_Command()
         {
-
             return new(num_of_test => //Tests (page) navigation
             {
-
                 testing_Page = new();
                 timeSpan = new(0, 10, 0);
                 timeSpanLabel[0] = timeSpan.ToString("mm\\:ss");
@@ -55,6 +55,7 @@ namespace Tests_TR
                 given_Answer.Clear();
                 paragraphs_For_Test.Clear();
                 Table_With_Answers.Clear();
+
                 var Task_A = Task.Run(() =>
                   {
                       current_Table_Color.Insert(0, table_Untouched);
@@ -66,10 +67,11 @@ namespace Tests_TR
                           isActive_Buttons.Insert(i, "True");
                           given_Answer.Insert(i, "");
                           Table_With_Answers.Insert(i, "");
-
-                      };
+                      }
+;
                       Table_With_Answer[0] = Table_With_Answers[selectedIndex[0]];
                   });
+
                 var Task_B = Task.Run(() =>
                   {
                       var questions_From_Db = unit_Of_Work.Questions.GetAll().Where(p => p.Test.Topic == Convert.ToInt32(num_of_test));
@@ -78,20 +80,19 @@ namespace Tests_TR
                       var questions_Range = questions_From_Db.ToList();
 
                       foreach (var item in random_Range)
-                      {
                           questions_For_Test.Add(questions_Range[item]);
 
-                      }
 
                       foreach (var item in questions_For_Test)
                       {
                           correct_Answers.Add(item.Right_Answer);
                           paragraphs_For_Test.Add(item.Paragraph);
                       }
+
                       timer = new(tcb, null, 0, 1000);
                   });
-                Task_A.Wait(); Task_B.Wait();
 
+                Task_A.Wait(); Task_B.Wait();
             });
         }
     }
