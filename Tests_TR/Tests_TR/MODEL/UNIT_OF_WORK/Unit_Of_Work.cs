@@ -13,6 +13,8 @@ namespace Tests_TR.MODEL
         public Tests_Repository Tests { get => tests_Repository ??= new(db); }
         public Users_Repository Users { get => users_Repository ??= new(db); }
 
+        public void Dispose() => db.Dispose();
+
         public async void SaveChangesAsync()
         {
             try

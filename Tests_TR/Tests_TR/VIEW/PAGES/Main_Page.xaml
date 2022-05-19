@@ -7,10 +7,176 @@
     xmlns:tests_tr="clr-namespace:Tests_TR"
     Title="Main_Page"
     d:DataContext="{d:DesignInstance Type=tests_tr:PagesViewModel}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Style="{StaticResource Page_Size}"
     mc:Ignorable="d">
-    <Grid Background="WhiteSmoke">
+    <Grid Style="{StaticResource White_Line}">
+        <!--#region Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.55*" />
+            <ColumnDefinition Width="0.005*" />
+            <ColumnDefinition Width="0.35*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.2*" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource Red_Rect}">
+            <TextBox Style="{StaticResource PDD2022}" Text="ПДД 2022" />
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <!--#region Definitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.80*" />
+                <ColumnDefinition Width="0.20*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*" />
+                <RowDefinition Height="0.2*" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource BIGPDD}"
+                Text="ПДД" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource Stud_Prog}"
+                Text="Учебная программа" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding Close_App}"
+                Content="X"
+                Style="{StaticResource Close_App_X}" />
+        </Grid>
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="0"
+            Style="{StaticResource Blue_Tab_Control}">
+            <TabItem
+                Width="120"
+                Height="30"
+                Background="#00C4D0"
+                Foreground="White"
+                Header="Категория &quot;B&quot;"
+                IsSelected="True"
+                Style="{StaticResource Blue_Tab}">
+                <Grid>
+                    <!--#region  Definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.8*" />
+                        <RowDefinition Height="0.2*" />
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="/VIEW/RESOURCES/Tesla.png" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource Company_White}"
+                        Text="ООО &quot;Мальчик, который выжил&quot;, 2020-2024, Беларусь, г. Минск." />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid
+            Grid.Row="1"
+            Grid.Column="3"
+            Style="{StaticResource Blue_Line}">
+            <!--#region  Definitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.45*" />
+                <ColumnDefinition Width="0.55*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource Come_In}"
+                Text="Выберите нужное" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                Command="{Binding Path=To_Test}"
+                CommandParameter="1"
+                Content="Зачет по теме №1" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="Главы 1-6" />
+        </Grid>
+        <Grid
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Background="#363636">
+            <!--#region Definitions-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource Company_Gray}"
+                Text="ООО &quot;Мальчик, который выжил&quot;" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding Open_Browser}"
+                Content="Я ВКонтакте"
+                Style="{StaticResource Bottom_Button}" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Command="{Binding Path=Switch_Page}"
+                CommandParameter="{Binding Pages_List[4]}"
+                Content="Изучить правила"
+                Style="{StaticResource Bottom_Button}" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="3"
+                Command="{Binding Path=Log_In_Out}"
+                CommandParameter="{Binding Pages_List[0]}"
+                Content="Выйти из аккаунта"
+                Style="{StaticResource Bottom_Button}" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="4"
+                Command="{Binding Close_App}"
+                Content="Выйти из программы"
+                Style="{StaticResource Bottom_Button}" />
+        </Grid>
+    </Grid>
+</Page>
+<!--<Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -105,5 +271,4 @@
             Command="{Binding Path=Switch_Page}"
             CommandParameter="{Binding Pages_List[4]}"
             Content="Изучить правила" />
-    </Grid>
-</Page>
+    </Grid>-->

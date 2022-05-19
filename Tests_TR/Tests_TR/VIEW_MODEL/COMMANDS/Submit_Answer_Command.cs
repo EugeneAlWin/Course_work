@@ -40,7 +40,6 @@ namespace Tests_TR
             for (byte i = 0; i < 10; i++)
                 if (given_Answers[i] == correct_Answers[i]) correct_Answers_count += 1;
 
-
             string ex_or_test = selectedIndex[0] == 0 ? "Экзамен" : "Тест",
                  passed_or_not = correct_Answers_count >= 9 ? "СДАН" : "НЕ СДАН",
                  expexted_answers = "",

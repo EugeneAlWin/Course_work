@@ -30,6 +30,7 @@
     <None Remove="VIEW\RESOURCES\IMG\2-1-9.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\LoadScreen.gif" />
     <None Remove="VIEW\RESOURCES\LoadScreen.png" />
+    <None Remove="VIEW\RESOURCES\Tesla.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -85,6 +86,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="VIEW\RESOURCES\favicon.ico" />
+    <Resource Include="VIEW\RESOURCES\Tesla.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -56,36 +56,44 @@ namespace Tests_TR.MODEL
             e.Property(n => n.Name).HasMaxLength(30).IsRequired();
             e.Property(ln => ln.Last_Name).HasMaxLength(30).IsRequired();
             e.Property(fn => fn.Father_Name).HasMaxLength(30);
+            e.HasCheckConstraint("CK_User_Login", "len(login) > 4");
+            e.HasCheckConstraint("CK_User_Password", "len(password) > 4");
             e.HasCheckConstraint("CK_User_Role", "role = 'admin' or role = 'user'");
+            e.HasCheckConstraint("CK_User_Name", "len(name) > 0");
+            e.HasCheckConstraint("CK_User_Last_Name", "len(last_name) > 0");
         }
 
-        private void Test_Builder(EntityTypeBuilder<Test> entity)
+        private void Test_Builder(EntityTypeBuilder<Test> e)
         {
-            entity.HasKey(i => i.Id).HasName("PK_Test");
-            entity.Property(i => i.Id).ValueGeneratedNever();
-            entity.HasIndex(i => i.Id).IsUnique();
-            entity.Property(n => n.Name).HasMaxLength(50).IsRequired();
-            entity.Property(t => t.Topic).IsRequired();
+            e.HasKey(i => i.Id).HasName("PK_Test");
+            e.Property(i => i.Id).ValueGeneratedNever();
+            e.HasIndex(i => i.Id).IsUnique();
+            e.Property(n => n.Name).HasMaxLength(50).IsRequired();
+            e.Property(t => t.Topic).IsRequired();
 
-            entity.HasMany(t => t.Questions)
+            e.HasMany(t => t.Questions)
                 .WithOne(q => q.Test)
                 .HasForeignKey(q => q.Test_Id)
                 .HasConstraintName("FK_Test_Questions_Test_Id ")
                 .OnDelete(DeleteBehavior.Cascade);
         }
 
-        private void Questions_Builder(EntityTypeBuilder<Questions> entity)
+        private void Questions_Builder(EntityTypeBuilder<Questions> e)
         {
-            entity.HasKey(i => i.Id).HasName("PK_Questions");
-            entity.Property(q => q.Question).HasMaxLength(300).IsRequired();
-            entity.Property(a => a.Answer_1).HasMaxLength(200).IsRequired();
-            entity.Property(a => a.Answer_2).HasMaxLength(200).IsRequired();
-            entity.Property(a => a.Answer_3).HasMaxLength(200);
-            entity.Property(a => a.Answer_4).HasMaxLength(200);
-            entity.Property(ra => ra.Right_Answer).HasMaxLength(1).IsRequired();
-            entity.Property(p => p.Paragraph).HasMaxLength(60);
-            entity.Property(i => i.Image).HasMaxLength(150);
-            entity.Property(t => t.Test_Id).IsRequired();
+            e.HasKey(i => i.Id).HasName("PK_Questions");
+            e.Property(q => q.Question).HasMaxLength(300).IsRequired();
+            e.Property(a => a.Answer_1).HasMaxLength(200).IsRequired();
+            e.Property(a => a.Answer_2).HasMaxLength(200).IsRequired();
+            e.Property(a => a.Answer_3).HasMaxLength(200);
+            e.Property(a => a.Answer_4).HasMaxLength(200);
+            e.Property(ra => ra.Right_Answer).HasMaxLength(1).IsRequired();
+            e.Property(p => p.Paragraph).HasMaxLength(60);
+            e.Property(i => i.Image).HasMaxLength(150);
+            e.Property(t => t.Test_Id).IsRequired();
+            e.HasCheckConstraint("CK_Questions_Id", "Test_Id >= 0 and Test_Id <= 7");
+            e.HasCheckConstraint("CK_Questions_Question", "len(Question) > 0");
+            e.HasCheckConstraint("CK_Questions_Answer_1", "len(Answer_1) > 0");
+            e.HasCheckConstraint("CK_Questions_Answer_2", "len(Answer_2) > 0");
         }
 
         public void Load_Data()

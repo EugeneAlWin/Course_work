@@ -1,0 +1,151 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="RedBrush" Color="Red" />
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+    <SolidColorBrush x:Key="GreenBrush" Color="#00C4D0" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+    <Style x:Key="Blue_Tab" TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border
+                            Name="Border"
+                            Margin="0,0,-4,0"
+                            Background="{StaticResource RedBrush}"
+                            BorderBrush="{StaticResource SolidBorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="2,2,0,0">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                Margin="12,2,12,2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="100" />
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource GreenBrush}" />
+                            <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="Button_Classic" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="151" />
+        <Setter Property="Height" Value="53" />
+        <Setter Property="Background" Value="#363636" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Foreground" Value="#e6e6e6" />
+    </Style>
+
+    <Style x:Key="Page_Size" TargetType="Page">
+        <Setter Property="Height" Value="650" />
+        <Setter Property="Width" Value="1000" />
+    </Style>
+    <Style x:Key="White_Line" TargetType="Grid">
+        <Setter Property="Background" Value="#F4FDFE" />
+    </Style>
+    <Style x:Key="Red_Rect" TargetType="Grid">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style x:Key="PDD2022" TargetType="TextBox">
+        <Setter Property="Width" Value="140" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="Margin" Value="45,0,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="BIGPDD" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="70" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="Stud_Prog" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="Close_App_X" TargetType="Button">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#A49E9E" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Margin" Value="30,-80,0,0" />
+    </Style>
+    <Style x:Key="Blue_Tab_Control" TargetType="TabControl">
+        <Setter Property="Background" Value="#00C4D0" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="Company_White" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#E6E6E6" />
+    </Style>
+    <Style x:Key="Blue_Line" TargetType="Grid">
+        <Setter Property="Background" Value="#00C4D0" />
+        <Setter Property="Margin" Value="0,31,0,0" />
+    </Style>
+    <Style x:Key="Come_In" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="Text_Label" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style x:Key="Input_Box" TargetType="TextBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Width" Value="160" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+    </Style>
+    <Style x:Key="Bottom_Button" TargetType="Button">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#8D8D8D" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style x:Key="Company_Gray" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="#8D8D8D" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+
+</ResourceDictionary>

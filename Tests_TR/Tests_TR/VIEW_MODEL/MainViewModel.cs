@@ -79,6 +79,9 @@ namespace Tests_TR
         public static RelayCommand Log_In_Out { get => log_In_Out; }
         public static RelayCommand Update_Database { get => update_Database; }
         public static RelayCommand Switch_Tab_By_TabItem { get => switch_Tab_By_TabItem; }
+        public static RelayCommand NULL_Comm { get => NULL; }
+        public static RelayCommand Close_App { get => close_App; }
+        public static RelayCommand Open_Browser { get => open_Browser; }
 
         #endregion
 
@@ -149,6 +152,9 @@ namespace Tests_TR
         private static readonly RelayCommand submit_Answer = Submit_Answer_Command();
         private static readonly RelayCommand update_Database = Update_Database_Command();
         private static readonly RelayCommand switch_Tab_By_TabItem = Switch_Tab_By_TabItem_Command();
+        private static readonly RelayCommand NULL = NULL_Command();
+        private static readonly RelayCommand close_App = Close_App_Command();
+        private static readonly RelayCommand open_Browser = Open_Browser_Command();
         #endregion
     }
 

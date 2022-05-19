@@ -68,6 +68,7 @@ namespace Tests_TR
                           given_Answer.Insert(i, "");
                           Table_With_Answers.Insert(i, "");
                       }
+
 ;
                       Table_With_Answer[0] = Table_With_Answers[selectedIndex[0]];
                   });
@@ -81,7 +82,6 @@ namespace Tests_TR
 
                       foreach (var item in random_Range)
                           questions_For_Test.Add(questions_Range[item]);
-
 
                       foreach (var item in questions_For_Test)
                       {

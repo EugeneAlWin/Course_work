@@ -10,7 +10,12 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
+    <Page.InputBindings>
+        <KeyBinding
+            Key="Backspace"
+            Command="{Binding NULL_Comm}"
+            CommandParameter="0" />
+    </Page.InputBindings>
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
