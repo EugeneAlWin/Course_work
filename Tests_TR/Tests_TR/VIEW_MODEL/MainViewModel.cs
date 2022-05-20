@@ -71,18 +71,17 @@ namespace Tests_TR
         #endregion
 
         #region Command_Region
-        public static RelayCommand Switch_Page { get => switch_Page; }
-        public static RelayCommand To_Test { get => to_Test; }
-        public static RelayCommand Switch_Tab { get => switch_Tab; }
-        public static RelayCommand Switch_Tab_Color { get => switch_Tab_Color; }
-        public static RelayCommand Submit_Answer { get => submit_Answer; }
-        public static RelayCommand Log_In_Out { get => log_In_Out; }
-        public static RelayCommand Update_Database { get => update_Database; }
-        public static RelayCommand Switch_Tab_By_TabItem { get => switch_Tab_By_TabItem; }
-        public static RelayCommand NULL_Comm { get => NULL; }
-        public static RelayCommand Close_App { get => close_App; }
-        public static RelayCommand Open_Browser { get => open_Browser; }
-
+        public static RelayCommand Log_In_Out { get; } = Log_In_Out_Command();
+        public static RelayCommand Switch_Page { get; } = Switch_Page_Command();
+        public static RelayCommand To_Test { get; } = To_Test_Command();
+        public static RelayCommand Switch_Tab { get; } = Switch_Tab_Command();
+        public static RelayCommand Switch_Tab_Color { get; } = Switch_Tab_Color_Command();
+        public static RelayCommand Submit_Answer { get; } = Submit_Answer_Command();
+        public static RelayCommand Update_Database { get; } = Update_Database_Command();
+        public static RelayCommand Switch_Tab_By_TabItem { get; } = Switch_Tab_By_TabItem_Command();
+        public static RelayCommand NULL_Comm { get; } = NULL_Command();
+        public static RelayCommand Close_App { get; } = Close_App_Command();
+        public static RelayCommand Open_Browser { get; } = Open_Browser_Command();
         #endregion
 
         public PagesViewModel()
@@ -140,24 +139,6 @@ namespace Tests_TR
 
         #endregion
     }
-
-    public partial class PagesViewModel //Commands' fields
-    {
-        #region Command_Region
-        private static readonly RelayCommand log_In_Out = Log_In_Out_Command();
-        private static readonly RelayCommand switch_Page = Switch_Page_Command();
-        private static readonly RelayCommand to_Test = To_Test_Command();
-        private static readonly RelayCommand switch_Tab = Switch_Tab_Command();
-        private static readonly RelayCommand switch_Tab_Color = Switch_Tab_Color_Command();
-        private static readonly RelayCommand submit_Answer = Submit_Answer_Command();
-        private static readonly RelayCommand update_Database = Update_Database_Command();
-        private static readonly RelayCommand switch_Tab_By_TabItem = Switch_Tab_By_TabItem_Command();
-        private static readonly RelayCommand NULL = NULL_Command();
-        private static readonly RelayCommand close_App = Close_App_Command();
-        private static readonly RelayCommand open_Browser = Open_Browser_Command();
-        #endregion
-    }
-
     public partial class PagesViewModel //ComputeHash
     {
         public static string ComputeHash(string str)

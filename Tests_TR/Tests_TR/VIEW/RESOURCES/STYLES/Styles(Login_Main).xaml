@@ -54,6 +54,29 @@
         <Setter Property="Foreground" Value="#e6e6e6" />
     </Style>
 
+    <Style x:Key="Button_Classic_Mini" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="151" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Background" Value="#363636" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#e6e6e6" />
+    </Style>
+    <Style x:Key="Description" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
     <Style x:Key="Page_Size" TargetType="Page">
         <Setter Property="Height" Value="650" />
         <Setter Property="Width" Value="1000" />
@@ -73,7 +96,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="Red" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="25" />
         <Setter Property="Foreground" Value="White" />
     </Style>
     <Style x:Key="BIGPDD" TargetType="TextBlock">

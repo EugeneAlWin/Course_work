@@ -32,7 +32,7 @@ namespace Tests_TR
 
                     dispatcher.Invoke(() =>
                     {
-                        switch_Page.Execute(main_Page);
+                        Switch_Page.Execute(main_Page);
                     });
                 }
             }

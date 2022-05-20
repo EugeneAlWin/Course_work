@@ -61,7 +61,7 @@ namespace Tests_TR
             clicks = 0;
             IsTest_Started = false;
 
-            if (Yes_Or_No == MessageBoxResult.Yes) switch_Page.Execute(main_Page);
+            if (Yes_Or_No == MessageBoxResult.Yes) Switch_Page.Execute(main_Page);
             else return;
         }
     }
