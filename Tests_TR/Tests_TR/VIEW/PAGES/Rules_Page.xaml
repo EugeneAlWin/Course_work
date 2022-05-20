@@ -7,11 +7,10 @@
     xmlns:tests_tr="clr-namespace:Tests_TR"
     Title="Rules_Page"
     d:DataContext="{d:DesignInstance Type=tests_tr:PagesViewModel}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Style="{StaticResource Page_Size}"
     mc:Ignorable="d">
 
-    <Grid Background="WhiteSmoke">
+    <Grid Background="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.08*" />
             <ColumnDefinition Width="*" />
@@ -22,13 +21,21 @@
         </Grid.RowDefinitions>
         <Button
             Grid.Row="0"
-            Grid.Column="0"
+            Grid.Column="1"
             Width="50"
             Height="50"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Background="red"
             Command="{Binding Switch_Page}"
             CommandParameter="{Binding Pages_List[1]}"
-            Content="Назад" />
-        <TabControl Grid.Row="1" Grid.Column="1">
+            Content="X"
+            FontSize="25"
+            Foreground="White" />
+        <TabControl
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
             <TabItem Header="1">
                 <ScrollViewer Content="{StaticResource Chapter_1}" />
             </TabItem>
@@ -109,6 +116,15 @@
             </TabItem>
             <TabItem Header="27">
                 <ScrollViewer Content="{StaticResource Chapter_27}" />
+            </TabItem>
+            <TabItem Header="П1">
+                <ScrollViewer Content="{StaticResource Appendix_1}" />
+            </TabItem>
+            <TabItem Header="П2">
+                <ScrollViewer Content="{StaticResource Appendix_2}" />
+            </TabItem>
+            <TabItem Header="П3">
+                <ScrollViewer Content="{StaticResource Appendix_3}" />
             </TabItem>
         </TabControl>
     </Grid>

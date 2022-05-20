@@ -101,7 +101,7 @@
     </Style>
     <Style x:Key="BIGPDD" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="70" />
+        <Setter Property="FontSize" Value="85" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="TextAlignment" Value="Center" />
     </Style>

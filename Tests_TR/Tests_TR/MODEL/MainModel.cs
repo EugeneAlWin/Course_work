@@ -16,8 +16,6 @@ namespace Tests_TR.MODEL
 
         public DatabaseContext()
         {
-            // Database.EnsureDeleted();
-
             var temp_Result = Database.EnsureCreated();
 
             if (temp_Result)
@@ -70,7 +68,6 @@ namespace Tests_TR.MODEL
             e.HasIndex(i => i.Id).IsUnique();
             e.Property(n => n.Name).HasMaxLength(50).IsRequired();
             e.Property(t => t.Topic).IsRequired();
-
             e.HasMany(t => t.Questions)
                 .WithOne(q => q.Test)
                 .HasForeignKey(q => q.Test_Id)
@@ -81,14 +78,14 @@ namespace Tests_TR.MODEL
         private void Questions_Builder(EntityTypeBuilder<Questions> e)
         {
             e.HasKey(i => i.Id).HasName("PK_Questions");
-            e.Property(q => q.Question).HasMaxLength(300).IsRequired();
-            e.Property(a => a.Answer_1).HasMaxLength(200).IsRequired();
-            e.Property(a => a.Answer_2).HasMaxLength(200).IsRequired();
-            e.Property(a => a.Answer_3).HasMaxLength(200);
-            e.Property(a => a.Answer_4).HasMaxLength(200);
+            e.Property(q => q.Question).HasMaxLength(400).IsRequired();
+            e.Property(a => a.Answer_1).HasMaxLength(300).IsRequired();
+            e.Property(a => a.Answer_2).HasMaxLength(300).IsRequired();
+            e.Property(a => a.Answer_3).HasMaxLength(300);
+            e.Property(a => a.Answer_4).HasMaxLength(300);
             e.Property(ra => ra.Right_Answer).HasMaxLength(1).IsRequired();
             e.Property(p => p.Paragraph).HasMaxLength(60);
-            e.Property(i => i.Image).HasMaxLength(150);
+            e.Property(i => i.Image).HasMaxLength(250);
             e.Property(t => t.Test_Id).IsRequired();
             e.HasCheckConstraint("CK_Questions_Id", "Test_Id >= 0 and Test_Id <= 7");
             e.HasCheckConstraint("CK_Questions_Question", "len(Question) > 0");

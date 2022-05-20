@@ -42,7 +42,7 @@ namespace Tests_TR
                     {
                         var temp_Role = unit_Of_Work.Users.GetAll()
                         .Where(p => p.Login == login_Password[0] && p.Password == ComputeHash(real_Password))
-                        .Where(p => p.Role == "admin").FirstOrDefault();
+                        .Where(p => p.Role.ToLower() == "admin").FirstOrDefault();
 
                         MessageBox.Show(temp_Role != null ? "Вы вошли как администратор" : "Вы вошли как студент", "Авторизация прошла успешно!");
 

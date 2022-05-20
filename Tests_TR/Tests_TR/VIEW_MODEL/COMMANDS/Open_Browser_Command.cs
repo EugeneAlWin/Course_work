@@ -13,7 +13,7 @@ namespace Tests_TR
             }
             catch (System.Exception)
             {
-                MessageBox.Show("Ошибка открытия браузера!");
+                MessageBox.Show("Ошибка открытия браузера!", "Упс!");
             }
         });
     }

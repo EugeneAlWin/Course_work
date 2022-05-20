@@ -16,7 +16,7 @@
             Command="{Binding NULL_Comm}"
             CommandParameter="0" />
     </Page.InputBindings>
-    <Grid Background="WhiteSmoke">
+    <Grid Background="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -25,18 +25,36 @@
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="0.9*" />
         </Grid.RowDefinitions>
+
+        <Button
+            Width="120"
+            Height="50"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Background="Green"
+            Command="{Binding Update_Database}"
+            CommandParameter="Прив"
+            Content="Сохранить данные"
+            Foreground="White" />
         <Button
             Grid.Row="0"
-            Grid.Column="0"
-            Width="150"
-            Height="30"
+            Grid.Column="1"
+            Width="50"
+            Height="50"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            VerticalContentAlignment="Center"
+            Background="Red"
             Command="{Binding Path=Log_In_Out}"
             CommandParameter="{Binding Pages_List[0]}"
-            Content="Выйти из аккаунта" />
+            Content="X"
+            FontSize="24"
+            Foreground="White" />
         <TabControl
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="2">
+            Grid.ColumnSpan="2"
+            Background="Gray">
             <TabItem Header="Пользователи">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -45,6 +63,7 @@
                     </Grid.RowDefinitions>
                     <DataGrid
                         AutoGenerateColumns="False"
+                        Background="Gray"
                         ColumnWidth="*"
                         ItemsSource="{Binding Users_Admin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <DataGrid.Columns>
@@ -57,15 +76,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <StackPanel
-                        Grid.Row="1"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                        <Button
-                            Command="{Binding Update_Database}"
-                            CommandParameter="Прив"
-                            Content="Обновить" />
-                    </StackPanel>
+
                 </Grid>
             </TabItem>
             <!--<TabItem Header="Тесты">
@@ -118,16 +129,6 @@
                             <DataGridTextColumn Binding="{Binding Path=Paragraph, Mode=TwoWay}" Header="Параграф" />
                         </DataGrid.Columns>
                     </DataGrid>
-
-                    <StackPanel
-                        Grid.Row="1"
-                        HorizontalAlignment="Center"
-                        Orientation="Horizontal">
-                        <Button
-                            Command="{Binding Update_Database}"
-                            CommandParameter=""
-                            Content="Обновить" />
-                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>

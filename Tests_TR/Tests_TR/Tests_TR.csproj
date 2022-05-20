@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <None Remove="Questions.sql" />
-    <None Remove="VIEW\RESOURCES\DefaultSql.txt" />
     <None Remove="VIEW\RESOURCES\favicon.ico" />
     <None Remove="VIEW\RESOURCES\IMG\1-1-1.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\1-1-2.jpg" />
@@ -28,6 +27,38 @@
     <None Remove="VIEW\RESOURCES\IMG\2-1-7.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\2-1-8.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\2-1-9.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-1.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-10.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-2.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-3.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-4.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-5.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-6.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-8.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\3-1-9.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-1.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-10.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-2.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-3.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-4.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-5.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-6.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-7.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-8.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\4-1-9.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\5-1-1.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\5-1-4.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\5-1-8.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\5-1-9.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\6-1-10.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\6-1-3.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\6-1-5.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\6-1-7.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\6-1-8.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\7-1-1.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\7-1-2.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\7-1-5.jpg" />
+    <None Remove="VIEW\RESOURCES\IMG\7-1-6.jpg" />
     <None Remove="VIEW\RESOURCES\IMG\LoadScreen.gif" />
     <None Remove="VIEW\RESOURCES\LoadScreen.png" />
     <None Remove="VIEW\RESOURCES\Tesla.png" />
@@ -51,9 +82,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="VIEW\RESOURCES\DefaultSql.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="VIEW\RESOURCES\IMG\1-1-1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -82,6 +110,38 @@
     <Resource Include="VIEW\RESOURCES\IMG\2-1-7.jpg" />
     <Resource Include="VIEW\RESOURCES\IMG\2-1-8.jpg" />
     <Resource Include="VIEW\RESOURCES\IMG\2-1-9.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-1.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-10.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-2.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-3.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-4.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-5.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-6.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-8.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\3-1-9.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-1.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-10.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-2.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-3.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-4.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-5.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-6.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-7.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-8.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\4-1-9.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\5-1-1.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\5-1-4.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\5-1-8.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\5-1-9.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\6-1-10.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\6-1-3.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\6-1-5.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\6-1-7.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\6-1-8.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\7-1-1.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\7-1-2.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\7-1-5.jpg" />
+    <Resource Include="VIEW\RESOURCES\IMG\7-1-6.jpg" />
     <Resource Include="VIEW\RESOURCES\Questions.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
