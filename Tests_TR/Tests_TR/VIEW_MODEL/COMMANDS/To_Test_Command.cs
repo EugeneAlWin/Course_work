@@ -49,7 +49,7 @@ namespace Tests_TR
                 NavigationService? NavService = NavigationService.GetNavigationService(current_Page);
                 NavService.Navigate(testing_Page);
                 current_Page = testing_Page;
-                given_Answers = new(10);
+                given_Answers = new() { "", "", "", "", "", "", "", "", "", "" };
                 questions_For_Test.Clear();
                 correct_Answers.Clear();
                 given_Answer.Clear();

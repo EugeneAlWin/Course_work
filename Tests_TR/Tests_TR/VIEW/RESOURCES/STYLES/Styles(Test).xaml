@@ -7,18 +7,25 @@
     <!--  endregion  -->
 
     <!--#region Testing_Page-->
-    <Style x:Key="Timer_Container" TargetType="StackPanel">
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="VerticalAlignment" Value="Center" />
+    <Style x:Key="Timer_Container" TargetType="Grid">
+        <Setter Property="Background" Value="#564C4C" />
     </Style>
     <Style x:Key="Timer_Text" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="18" />
         <!--<Setter Property="FontWeight" Value="500" />-->
-        <Setter Property="Foreground" Value="#000000" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
     </Style>
     <Style x:Key="Topic" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+    <Style x:Key="Topic_Container" TargetType="Grid">
+        <Setter Property="Background" Value="#564C4C" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
     </Style>
 
     <Style x:Key="Tab_Control" TargetType="TabControl">
@@ -27,45 +34,52 @@
     </Style>
 
     <Style x:Key="Tab_Header_Untouched" TargetType="TabItem">
-        <Setter Property="Width" Value="50" />
-        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="68" />
+        <Setter Property="Height" Value="49" />
+        <Setter Property="FontSize" Value="20" />
     </Style>
     <Style
         x:Key="Tab_Header_Wrong"
         BasedOn="{StaticResource Tab_Header_Untouched}"
         TargetType="TabItem">
-        <Setter Property="Background" Value="DarkRed" />
+        <Setter Property="Background" Value="#FF4A4A" />
     </Style>
     <Style
         x:Key="Tab_Header_Right"
         BasedOn="{StaticResource Tab_Header_Untouched}"
         TargetType="TabItem">
-        <Setter Property="Background" Value="Green" />
+        <Setter Property="Background" Value="#00E85D" />
     </Style>
 
     <Style x:Key="Table_Wrong" TargetType="Grid">
-        <Setter Property="Background" Value="DarkRed" />
+        <Setter Property="Background" Value="#FF4A4A" />
     </Style>
     <Style x:Key="Table_Untouched" TargetType="Grid">
-        <Setter Property="Background" Value="#c4c4c4" />
+        <Setter Property="Background" Value="#564C4C" />
     </Style>
     <Style x:Key="Table_Right" TargetType="Grid">
-        <Setter Property="Background" Value="Green" />
+        <Setter Property="Background" Value="#00E85D" />
     </Style>
     <Style x:Key="Table_Text" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="25" />
+
     </Style>
 
 
     <Style x:Key="Exit_Button" TargetType="Button">
         <Setter Property="Background" Value="Red" />
         <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="25" />
     </Style>
 
-    <Style x:Key="Question_Image" TargetType="Image" />
+    <Style x:Key="Question_Image" TargetType="Image">
+
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
 
     <Style x:Key="Question" TargetType="TextBlock">
         <Setter Property="TextWrapping" Value="Wrap" />
@@ -73,29 +87,43 @@
 
     <Style x:Key="Answer" TargetType="TextBlock">
         <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Padding" Value="4,0,4,0" />
+        <Setter Property="FontSize" Value="16" />
+
+    </Style>
+    <Style x:Key="Answer_Num" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
     </Style>
     <Style x:Key="Input_Box" TargetType="TextBox">
-        <Setter Property="Width" Value="15" />
-        <Setter Property="Height" Value="20" />
         <Setter Property="MaxLength" Value="1" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
     </Style>
 
     <Style x:Key="Button_Submit" TargetType="Button">
-        <Setter Property="Background" Value="#666" />
-        <Setter Property="Foreground" Value="#fff" />
-        <Setter Property="BorderBrush" Value="#fff" />
-        <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="Width" Value="110" />
-        <Setter Property="Height" Value="25" />
-        <Setter Property="Margin" Value="30,0,0,0" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="151" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Background" Value="#363636" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Foreground" Value="#e6e6e6" />
     </Style>
 
     <!--#region Labels' styles-->
     <Style x:Key="Third_Answer" TargetType="TextBlock">
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock1, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -103,13 +131,20 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer" TargetType="TextBlock">
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock2, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
+                <Setter Property="Background" Value="Red" />
             </DataTrigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer2" TargetType="TextBlock">
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock3, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -117,13 +152,20 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer2" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock4, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
+
             </DataTrigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer3" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock5, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -131,6 +173,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer3" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock6, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -138,6 +183,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer4" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock7, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -145,6 +193,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer4" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock8, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -152,6 +203,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer5" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock9, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -159,6 +213,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer5" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock10, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -166,6 +223,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer6" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock11, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -173,6 +233,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer6" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock12, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -180,6 +243,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer7" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock13, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -187,6 +253,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer7" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock14, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -194,6 +263,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer8" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock15, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -201,6 +273,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer8" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock16, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -208,6 +283,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer9" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock17, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -215,6 +293,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer9" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock18, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -222,6 +303,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Third_Answer10" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock19, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />
@@ -229,6 +313,9 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="Fourth_Answer10" TargetType="TextBlock">
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Margin" Value="5,0,0,0" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding ElementName=TextBlock20, Path=Text}" Value="">
                 <Setter Property="Visibility" Value="Collapsed" />

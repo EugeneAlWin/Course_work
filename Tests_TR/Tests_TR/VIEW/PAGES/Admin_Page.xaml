@@ -50,7 +50,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Login}" Header="Логин" />
                             <DataGridTextColumn Binding="{Binding Path=Password}" Header="Пароль" />
-                            <DataGridTextColumn Binding="{Binding Path=Role}" Header="Роль" />
+                            <DataGridTextColumn Binding="{Binding Path=Role}" Header="Роль (admin или user)" />
                             <DataGridTextColumn Binding="{Binding Path=Last_Name}" Header="Фамилия" />
                             <DataGridTextColumn Binding="{Binding Path=Name}" Header="Имя" />
                             <DataGridTextColumn Binding="{Binding Path=Father_Name}" Header="Отчество" />

@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/VIEW/RESOURCES/Styles.xaml" />
+                <ResourceDictionary Source="/VIEW/RESOURCES/STYLES/Styles(Test).xaml" />
                 <ResourceDictionary Source="/VIEW/RESOURCES/STYLES/Styles(Login_Main).xaml" />
                 <ResourceDictionary Source="/VIEW/RESOURCES/DICTIONARY/Rules.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -11,7 +11,7 @@ namespace Tests_TR
         {
             return new(given_answer_parameter => //Parameter
            {
-               given_Answers.Insert(selectedIndex[0], (string)given_answer_parameter);
+               given_Answers[selectedIndex[0]] = ((string)given_answer_parameter);
                isActive_Buttons[selectedIndex[0]] = "False";
                tab_Header_Color[selectedIndex[0]] = IsAnswer_Correct() ? tab_Right : tab_Wrong;
                table_Colors[selectedIndex[0]] = IsAnswer_Correct() ? table_Right : table_Wrong;

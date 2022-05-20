@@ -7,8 +7,7 @@
     xmlns:tests_tr="clr-namespace:Tests_TR"
     Title="Testing_Page"
     d:DataContext="{d:DesignInstance Type=tests_tr:PagesViewModel}"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Style="{StaticResource Page_Size}"
     mc:Ignorable="d">
     <Grid Style="{StaticResource Background}">
         <Grid.ColumnDefinitions>
@@ -21,17 +20,20 @@
             <RowDefinition Height="0.8*" />
             <RowDefinition Height="0.15*" />
         </Grid.RowDefinitions>
-        <StackPanel
+        <Grid
             Grid.Row="0"
             Grid.Column="0"
             Style="{StaticResource Timer_Container}">
             <TextBlock Style="{StaticResource Timer_Text}" Text="{Binding TimeSpanLabel[0], UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
-        <TextBlock
+        </Grid>
+        <Grid
             Grid.Row="0"
             Grid.Column="1"
-            Style="{StaticResource Topic}"
-            Text="Тестирование" />
+            Style="{StaticResource Topic_Container}">
+
+            <TextBlock Style="{StaticResource Topic}" Text="Тестирование" />
+        </Grid>
+
         <Grid Grid.Row="0" Grid.Column="2">
             <Button
                 Command="{Binding Path=Switch_Page}"
@@ -44,6 +46,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="3"
+            BorderThickness="0"
             SelectedIndex="{Binding SelectedIndex[0]}"
             Style="{StaticResource Tab_Control}">
             <TabControl.InputBindings>
@@ -62,12 +65,12 @@
                 Style="{Binding Tab_Header_Color[0]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -82,20 +85,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="*" />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -105,6 +110,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -135,7 +141,9 @@
                             Text="{Binding Questions_For_Test[0].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[0]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -156,12 +164,12 @@
                 Style="{Binding Tab_Header_Color[1]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -176,20 +184,20 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
-
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -199,6 +207,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -229,7 +238,9 @@
                             Text="{Binding Questions_For_Test[1].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[1]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -250,12 +261,12 @@
                 Style="{Binding Tab_Header_Color[2]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -270,20 +281,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -293,6 +306,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -323,7 +337,9 @@
                             Text="{Binding Questions_For_Test[2].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[2]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -344,12 +360,12 @@
                 Style="{Binding Tab_Header_Color[3]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -364,20 +380,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -387,6 +405,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -417,7 +436,9 @@
                             Text="{Binding Questions_For_Test[3].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[3]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -438,12 +459,12 @@
                 Style="{Binding Tab_Header_Color[4]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -458,20 +479,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -481,6 +504,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -511,7 +535,9 @@
                             Text="{Binding Questions_For_Test[4].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[4]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -532,12 +558,12 @@
                 Style="{Binding Tab_Header_Color[5]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -552,20 +578,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -575,6 +603,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -605,7 +634,9 @@
                             Text="{Binding Questions_For_Test[5].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[5]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -626,12 +657,12 @@
                 Style="{Binding Tab_Header_Color[6]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -646,20 +677,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -669,6 +702,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -699,7 +733,9 @@
                             Text="{Binding Questions_For_Test[6].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[6]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -720,12 +756,12 @@
                 Style="{Binding Tab_Header_Color[7]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -740,20 +776,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -763,6 +801,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -793,7 +832,9 @@
                             Text="{Binding Questions_For_Test[7].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[7]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -814,12 +855,12 @@
                 Style="{Binding Tab_Header_Color[8]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -834,20 +875,22 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
+
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -857,6 +900,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -887,7 +931,9 @@
                             Text="{Binding Questions_For_Test[8].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[8]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -908,12 +954,12 @@
                 Style="{Binding Tab_Header_Color[9]}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.3*" />
-                        <RowDefinition />
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8*" />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -928,20 +974,21 @@
 
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.25*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="0.05*" />
+                            <ColumnDefinition Width="0.95*" />
                         </Grid.ColumnDefinitions>
 
                         <TextBlock
                             Grid.Row="0"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="1." />
                         <TextBlock
                             Grid.Row="0"
@@ -951,6 +998,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Grid.Column="0"
+                            Style="{StaticResource Answer_Num}"
                             Text="2." />
                         <TextBlock
                             Grid.Row="1"
@@ -981,7 +1029,9 @@
                             Text="{Binding Questions_For_Test[9].Answer_4}" />
                         <TextBox
                             Grid.Row="4"
-                            Grid.Column="0"
+                            Grid.Column="1"
+                            Width="20"
+                            Margin="100,0,0,0"
                             IsEnabled="{Binding IsActive_Buttons[9]}"
                             Style="{StaticResource Input_Box}"
                             Text="{Binding PF, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -999,9 +1049,17 @@
         </TabControl>
         <Grid Grid.Row="2" Grid.Column="0">
             <Button
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="#564C4C"
+                BorderThickness="0"
                 Command="{Binding Switch_Tab}"
                 CommandParameter="false"
-                Content="&lt;" />
+                Content="&lt;"
+                FontSize="40"
+                Foreground="#FBFBFB" />
         </Grid>
         <Grid
             Grid.Row="2"
@@ -1012,9 +1070,17 @@
 
         <Grid Grid.Row="2" Grid.Column="2">
             <Button
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="#564C4C"
+                BorderThickness="0"
                 Command="{Binding Switch_Tab}"
                 CommandParameter="true"
-                Content="&gt;" />
+                Content="&gt;"
+                FontSize="40"
+                Foreground="#FBFBFB" />
         </Grid>
     </Grid>
 </Page>
