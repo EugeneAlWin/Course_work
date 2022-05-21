@@ -21,7 +21,7 @@ namespace Tests_TR.MODEL
             if (temp_Result)
             {
                 string sql_Raw = "";
-                var taskA = Task.Run(() => sql_Raw = File.ReadAllText(@"C:\Users\evgen\Desktop\Курсач ООП\Tests_TR\Tests_TR\VIEW\RESOURCES\Questions.sql"));
+                var taskA = Task.Run(() => sql_Raw = File.ReadAllText(@"./VIEW/RESOURCES/Questions.sql"));
                 string Server_Name = ConfigurationManager.ConnectionStrings["NameOfDatabase"].ConnectionString;
                 taskA.Wait();
                 Database.ExecuteSqlRaw(string.Format(sql_Raw, Server_Name));

@@ -142,9 +142,6 @@
     <Resource Include="VIEW\RESOURCES\IMG\7-1-2.jpg" />
     <Resource Include="VIEW\RESOURCES\IMG\7-1-5.jpg" />
     <Resource Include="VIEW\RESOURCES\IMG\7-1-6.jpg" />
-    <Resource Include="VIEW\RESOURCES\Questions.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="VIEW\RESOURCES\favicon.ico" />
     <Resource Include="VIEW\RESOURCES\Tesla.png" />
   </ItemGroup>
@@ -156,6 +153,9 @@
   <ItemGroup>
     <None Update="VIEW\RESOURCES\img\квартира1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VIEW\RESOURCES\Questions.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
